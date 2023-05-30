@@ -5,5 +5,5 @@ _site
 vendor
 
 # OS or Editor folders
-desktop.ini
+**/desktop.ini
 .vscode
