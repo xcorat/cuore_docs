@@ -3,7 +3,10 @@ Introduction
 
 1. This document aims to detail the preliminary analysis of CUORE data searching for [0vbb] decay in Multiplicity 2 events.
 2. According to simulations we expect ~5% of [0vbb] decay signal to deposit energy in two CUORE crystals, thus registering as a Multiplicity 2 event where the energy is split between two crystals. 
-3. 
+3. Similar to the main analysis (Multiplicity 1, M1), the basic goal here too, is to model the data from the detector as a combination of background components and [0vb] signal, and extract the best fit [0vbb] rate that is consistant with our data and the expected background contributions. 
+4. Unlinke the M1, however, this analysis is done in 2D (E1 vs E2 axes representing the two energy depositions) and the expected signal spans the full energy range allowed (threshold to Qbb) on each axis. 
+
+![bkg_e1e2](../assets/img/test.jpg)
 
 
 Backup
@@ -37,7 +40,7 @@ We use a four-component model as background as a sum of four components by simpl
 
 To look for evidence of 0vbb in these data
 
-register as coinsident event pairs  register as multiplicity 2 events, or events where 
+register as coincident event pairs register as multiplicity 2 events, or events where 
 
 ## Physics Motivation
 
@@ -54,69 +57,9 @@ register as coinsident event pairs  register as multiplicity 2 events, or events
 + BM Fit
 + Fit output MCMC
 
-## M2 Fit
 
-We can search for 0vbb decay in M2 data by using the background model output as the expected background and looking for 0vbb decay signature on top of it. If we model the data $D$ as a sum of N background component PDFs ($f_1..f_N)$ and the 0v component  ($_0$),
-
-$$ \mathcal{D} :~ \sum_0^N c_i f_i$$
-
-The probability of observed data is given by:
-
-$$ \mathcal{L}(\mathcal{D}| \vec{\theta}) = \lambda^{n} \frac{e^{-\lambda}}{n} \prod f(\vec E| \vec \theta)
-$$
-
-Fit data as a sum of multiple background components as 0vbb signal.
-+ Simpler background model by merging components according to the QBM fit output.
-+ Signal component: 0vbb processed with the same configuration as that of the rest of the MC
-+ Extract 0vbb rate posterior by maximizing the un-binned extended likelihood of data by marginalizing over the components strengths of background and signal.
-+ Use PyMC3
-+ Priors?
-
-### Optimizing the fit
-
-+ Rotated axes:
-    Fit is done on rotated axes $u, v$: 
-    $$  u = (E_1+E_2)/\sqrt2 \\
-        v = (E_1 - E_2)/\sqrt2 $$
-+ Smoothing histograms: The 2D PDFs are 'smoothed' using a kernel density function implemented in ROOT 
-`h2 = h2a.Smooth(1, 'k5b')` 
-
-
-## Fit Input
-
-The core inputs for the fit are the PDFs that represent the expected spectra of background and signal components and observed data as an event list. We first create reduced ROOT files (staging files) for each simulated component that selects the data specific for the M2 analysis, and use these to create the input PDFs depending on the selection of data for each specific test of the M2 analysis. 
-
-| Fit Settings  |   | 
-|-----------    |-----------|
-| Threshold     | 350 keV |
-| ROI           | ESum $\in (2400, 2570)$ |
-| Coincidence Window  | 30 ms, 150mm 
-| Main Cuts     | + `Multiplicity == 2` | 
-|               | + `PSA && AllFilters` |
-
-### M2 Reduced Data
-
-+ Rotation
-+ Shifts
-+ Blinding
-
-### Fit Input
-
-+ Cuts and other settings?
 
 ## Fit Results
 
 ### Likelihood Comparisons
 We use the maximum log probability ($\mathcal{L}_{max}$) of each fit as a point estimator to compare the quality of different fit settings. 
-
-### Sensitivity
-
-### Bias
-
-### Systematic Uncertainty 
-
-#### Background model systematics
-To evaluate the effect of uncertainties related to background model predictions, we run the fit multiple times while varying the input components according to the JAGS fit output. We pick a random point from the JAGS Markov Chain (instead of the mode as above) and use those normalization factors to create input component PDFs.
-
-[Histogram of 0v rate modes]
-
