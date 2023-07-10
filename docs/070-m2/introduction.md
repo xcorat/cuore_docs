@@ -1,19 +1,26 @@
 Introduction
 ============
 
+1. This document aims to detail the preliminary analysis of CUORE data searching for [0vbb] decay in Multiplicity 2 events.
+2. According to simulations we expect ~5% of [0vbb] decay signal to deposit energy in two CUORE crystals, thus registering as a Multiplicity 2 event where the energy is split between two crystals. 
+3. 
+
+
+Backup
+======
 1. In this section we explain the [0vbb] search in the CUORE detector array using our Multiplicity 2 data.
 2. While our main analysis focuses on events where the full [decay energy][Qbb] is deposited in a single crystal, we expect ~12% of the [0vbb] events to deposit their energy in at least two crystals (or more), a third of which we expect to deposit most of their [decay energy][Qbb] in two crystals [Multiplicity 2 events][M2]
 3. Our goal in this analysis, thus, is to obtain a (bayesian posterior) probability distribution of the [0vbb] rate(or $T_{1/2}$) by modeling the observed 2D M2 spectrum as a sum of expected decay spectra which includes the [0vbb] signal and multiple background components as modeled in the [Background Model][BM] while marginalizing over the strength (number of events) of each component.
 
 
 
-[0vbb]: $0\nu\beta\beta$ decay
+[0vbb]: /docs/990-glossary/index.md#0vbb "$0\nu\beta\beta$ decay"
 
-[Qbb]: $Q_{\beta\beta}$
+[Qbb]: /docs/990-glossary/index.md#qbb
 
-[M2]: Multiplicity 2
+[M2]: /docs/990-glossary/index.md#m2 "Multiplicity 2"
 
-[BM](../060-bm/index.md): Background Model
+[BM]: ../060-bm/index.md "Background Model"
 
 # CUORE M2 Analysis
 
@@ -30,7 +37,7 @@ We use a four-component model as background as a sum of four components by simpl
 
 To look for evidence of 0vbb in these data
 
-register as consident event pairs  register as multiplicity 2 events, or events where 
+register as coinsident event pairs  register as multiplicity 2 events, or events where 
 
 ## Physics Motivation
 

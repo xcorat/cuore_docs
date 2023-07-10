@@ -8,5 +8,3 @@
     9. M1 0v?
 6. [CUORE Background Model and 2v analysis](060-bm/index.md)
 6. [M2 Analysis](070-m2/introduction.md)
-
-
