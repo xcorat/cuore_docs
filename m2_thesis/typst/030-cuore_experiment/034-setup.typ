@@ -1,6 +1,6 @@
 #import "../common.typ": *
 
-== Experimental Setup
+== Experimental Structure
 
 === LNGS
 
