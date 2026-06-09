@@ -1,9 +1,3 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-
-# OS or Editor folders
-**/desktop.ini
 .vscode
+
+*.pdf
