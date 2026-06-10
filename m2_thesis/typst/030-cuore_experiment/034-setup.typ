@@ -3,73 +3,63 @@
 == Experimental Structure
 
 === LNGS
-
-- Since the very first days of #teo2 detectors, LNGS has been the home (1989 22g crystal).
-- 100km away from Rome, located at the heart (pun intended) of the Apennines, about a kilometer below its largest peak, Corno Grande, CUORE is hosted at LNGS. - With an average 3800 m.w.e rock overburden from the granite peak,
-- With the persistant effort of the science community LNGS became a reality with a highway running through the mountain making it one of the only deep underground facilities with that level of access.
-- In it's three experimental halls, houses many experiments, including neighbors LEGEND, Xenon 1T etc.
-- Above ground complex sits on the foothills below the lift to the corno grande where computing, engineering and offices lie.
-- three floor tructure that hosts all CUORE systems and a small adgacent hut used for parts storage in the construction phase (parts DB, and first visit?)
+- Located roughly 100 km from Rome, LNGS is situated at the heart (pun intended) of the Apennine Mountains, roughly a kilometer below its largest peak, Corno Grande. This granite mountain provides an average rock overburden of 3800 meters of water equivalent (m.w.e.).
+- Since the pioneering operation of a 22 g #teo2 crystal in 1989, the Laboratori Nazionali del Gran Sasso (LNGS) has been the permanent home of this bolometric research program.
+- Thanks to the persistent efforts of the scientific community, LNGS was constructed in tandem with a highway tunnel running through the mountain, making it one of the only deep underground facilities in the world with direct, drive-in access.
+- Its three vast experimental halls host numerous rare-event searches, including CUORE and neighboring experiments such as LEGEND and XENON1T.
+- The above-ground campus sits at the foothills below the Corno Grande cable car, housing the computing centers, engineering workshops, and administrative offices.
+- Underground, CUORE is housed in the highway-side of Hall A (*?*).
 
 === CUORE Hut
-
-- Hut: bottom main structure is the cryostat support structue, has the double task of being the mechanical support and also isolating the experiment from seismic noise, isolating it from the host building, and is constructed after deep seismic analysis (?) that measured the responses to seismic events.
-- Lower strucure  has .6m thick walls, 4.5x4.5 tall-wide, and rests on rubber bampners with high damping coefficient.
-- Top walls: (??) sandfilled (tubular) columns on the corners of the walls support the main support platform which hosts the cryostat.
-- Room temperature plat of the cryostat is suspended from the Main support platform (MSP) which, while operating sits at level with the 2nd (1st?) floor ceiling.
-- The first floow is the clean room, used for construction with main room holding the cryostat and a level 8(? 10?) clean room used for tower assembly and bonding, and a seperate room used for gluing the chips on to the cryostat also on the same floor.
-- Main section of the top floor is converted to a faraday cage where all the electronics sits in the dark,
-  - The detector is suspended from seperate mounts in the 3rd floor,
-  - The cryogenic systems plumbing is run through sand-filled pipes, wiring and all other connectors are suspended from the ceiling so as not to touch the support plates.
-  - walls padded with foams to reduce noise, including that which comes from the cooling fans of the electronics, which can get hot. Seperate (radon abatement and?) ventilation system is installed to keep the floor cool (?)
-- The MSP supports the cryostat with 3 steel ropes, each can support 6t of weight.
-- neither first or second floor is accessed in ideal data-taking conditions to reduce vibrations.
-
+- The primary underground infrastructure is the CUORE hut, a dedicated three-story structure containing all experimental systems, alongside a small adjacent hut that served as a parts storage database during the construction phase.
+- The bottom section of this hut acts as the main cryostat support structure. Designed following a deep seismic response analysis, it fulfills the dual role of bearing the experiment's weight while mechanically isolating it from the host building and ambient seismic noise.
+- This lower structure features 0.6 m thick walls, measures $4.5 times 4.5 "m"^2$ in footprint, and rests on rubber bumpers with a high damping coefficient.
+- At the corners of the walls, sand-filled tubular columns support the Main Support Plate (MSP), the massive platform that holds the cryostat.
+- The room-temperature top flange of the cryostat is suspended directly from this MSP using three heavy-duty steel ropes, each rated to support 6 tonnes. During operation, the MSP sits flush with the ceiling of the first floor.
+- The first floor serves as the primary cleanroom environment. It contains the main cryostat area, a Class 10 (or Class 1000) cleanroom dedicated to tower assembly and wire bonding, and a separate room utilized for gluing the thermistor chips onto the crystals.
+- The top floor was converted into a massive Faraday cage to house all the sensitive readout electronics in electromagnetically shielded darkness.
+  - The detector itself is suspended from separate, isolated mounts located on this second floor.
+  - To drastically reduce vibration transmission, the cryogenic plumbing is routed through sand-filled pipes, and all wiring and connectors are suspended directly from the ceiling to avoid contact with the support plates.
+  - Furthermore, the walls are padded with acoustic foam to dampen airborne noise, particularly from the electronics cooling fans. A dedicated ventilation and radon abatement system keeps this floor cool and radiopure.
+- To minimize human-induced vibrations, neither the first nor the second floor is accessed during ideal data-taking conditions.
 
 === Cryostat
+- The CUORE cryostat is a state-of-the-art, multistage, cryogen-free dilution refrigerator with an internal capacity of approximately one cubic meter—earning it the moniker of the "coldest cubic meter in the known universe."
+- Due to the massive payload and the need for practical cooldown times, it employs a Fast Cooling System (FCS) that utilizes liquid Helium vapors to pre-cool the mass down to roughly 35 K.
+- From there, five Pulse Tube (PT) cryocoolers drive the temperature down to ~4 K.
+- The operational base temperature is achieved using a custom-designed #super[3]He/#super[4]He Dilution Unit (DU).
 
-- CUORE cryostat is a state-of-the-art multistage cryogen free cryostat with a capacity of about one cubic meter
-  - hence the name, "coldest cubic meter in the known universe"
-- Due to the large mass, and need for fast cooldown times, it employs a "fast cooling system" that brings the cryostat to about 35K using liquid He vapors.
-- Then it is cooled to 4K using 5 pulse tube coolers.
-- Base temperature is reached using a custom designed 3He/4He dialution refrigirator
-- Composed of 6 coaxial vessels {300K, 40K, 4K, 600mK-still, 50mK-HEX, 10mK-mixing-chamber}
-- 300K and 4K chanbers are vacuum tight creating two sections,
-  - OVC (outer vacuum chamber) 5.9m3 volume with min pressure < 10-6 mbar
-  - OVC (internal vacuum chamber) - 3.4 m3,  min pressure < 10-8
-- very complicated design and fabrication process involving many many parts,
-  - Romab Pb casing, Leiden dilution refrigirator, vessels and plates with feedthroughs for cryogens and electronics.
-  - Adhered to strict radio-purity standards, 40K, 4K, still built from OVC Copper(99.99% Cu, highest purity commercial copper)
-  - Most critical inner parts (MC flanges, plates, TSP, detector frames etc) are NOSV (high conductivity, low H)
+==== Vessels
+- The cryostat is composed of six nested, coaxial vessels corresponding to the different thermal stages: 300 K (room temperature), 40 K, 4 K, 600 mK (Still), 50 mK (Heat Exchanger/HEX), and 10 mK (Mixing Chamber/MC).
+- The 300 K and 4 K vessels are vacuum-tight, partitioning the system into two distinct vacuum regions:
+  - *Outer Vacuum Chamber (OVC):* $5.9 "m"^3$ volume with a minimum pressure $< 10^(-6)$ mbar.
+  - *Inner Vacuum Chamber (IVC):* $3.4 "m"^3$ volume with a minimum pressure $< 10^(-8)$ mbar.
+- The design and fabrication process was enormously complex, integrating the Roman lead shielding casing, the Leiden dilution refrigerator, and numerous vessels equipped with specialized feedthroughs for cryogens and electronics.
+  - Strict radiopurity standards dictated material selection: the 40 K, 4 K, and 600 mK vessels were constructed from OFE copper (99.99% purity, the highest available commercial grade).
+    - The most critical inner components (MC flanges, thermal plates, the TSP, and detector frames) were machined from NOSV copper, an ultra-pure alloy selected for its high thermal conductivity and low hydrogen content.
 
-==== TSP and Detector suspension
-
-- Detector is suspended from the Tower Support Plate (TSP) which is isolated from the cryostat.
-- TSP is inside the IVC below the top lead shield (TL-not mentioned before..), inside the 10mk vessel mechanically suspended from a Y beam that is located above the top of the cryostat (top flange?) using detector suspension bars.
-- Each detector suspension bar is a segmented structure that is thermalized at each stage of the cryostat from the Y beam/top flange to the still (this really need validation)
-- TSP is then suspended from last(??) thermal contact at still stage by kevlar (k49??) ropes and the last segment is made of high purity Cu.
-- TSP is connected to 10mK by four Cu connector with a few dozen thin NOSV Cu sheets to provide thermalizatoin while mechanically isolating them from the cryostat.
-- detector suspemsopm share OVC vacuum, using a tube with bellows which are connected to the Y beam and the 600mK via o-rings and to the 4K plate with an indium seal that sepeate the OVC from the IVC.
--Y beam is on top of the cryostat support structure (MSP) and anchred to three mechanical insulators by suspension made by Minus-K (technologies), which acts as a low pass with a cutoff frequency around 0.5Hz. Provides ~ 30dB attenuation of the TSP compared to MSP for the verticle axis.
+==== TSP and Detector Suspension
+- To shield it from vibrations, the detector array is suspended from the Tower Support Plate (TSP), which is mechanically isolated from the cryostat vessels.
+- The TSP is located inside the IVC, below the top lead shield and within the 10 mK vessel. It is suspended from a dedicated Y-shaped beam situated above the room-temperature top flange of the cryostat via specialized detector suspension bars.
+- Each detector suspension bar is a segmented structure that is carefully thermalized at each successive cryostat stage down to the Still (600 mK).
+- From this final thermal contact at the Still stage, the TSP is hung using low-thermal-conductivity Kevlar (Kevlar-49) ropes, with the terminal segment fabricated from high-purity copper.
+- While mechanically isolated, the TSP must still be cooled. It is thermally linked to the 10 mK Mixing Chamber plate by four flexible copper connectors, each made of dozens of ultra-thin NOSV copper leaves. This provides necessary thermalization while preventing the transmission of mechanical vibrations.
+- The suspension rods share the OVC vacuum environment. They are housed inside tubes equipped with edge-welded bellows, sealing to the Y-beam and the 600 mK plate with O-rings, and separating the OVC from the IVC at the 4 K plate with an indium seal. (*validate?*)
+- Crucially, the external Y-beam rests on top of the Main Support Plate (MSP) and is anchored to three Minus-K technology negative-stiffness mechanical isolators. This system acts as a low-pass mechanical filter with a cutoff frequency of approximately 0.5 Hz, providing roughly 30 dB of vertical vibration attenuation for the TSP relative to the MSP.
 
 ==== Shields
+- Heavy lead shielding is utilized to suppress environmental $gamma$ rays originating from the natural $238$U and $232$Th decay chains. Uniquely, two enormous lead shields are integrated directly into the cryogenic volumes.
+- The side and bottom shields are constructed from ancient Roman lead. Recovered from a 1st-century AD shipwreck, these 200 ingots have completely depleted their $210$Pb radioactive isotope inventory. The lead was melted and cast in a nitrogen atmosphere before being assembled in 2015. This 6 cm thick shield weighs approximately 5 tonnes. It is situated inside the IVC, mechanically suspended from the 600 mK plate, but thermally anchored to the 4 K stage "to save the coldest masses from the thermal load" (*?*).
+- The top lead shield is also located inside the IVC, positioned directly above the TSP and below the 10 mK Mixing Chamber plate. It is a 30 cm thick block of modern lead, weighing roughly 2 tonnes.
 
-Pb shields to suppress $gamma$s from natural #u238 and #th232 and daughter decay radiation, with two Pb shields are placed within at cryogenic temperatures.
-- Side and bottom shields are made of Roman Pb, 200 depleted ancient Pb ingots from 1st century AD cast in N2 ad assembled in 2015, 6cm thick shield weighing about 5 tonnes, placed inside the IVC and suspended from 600mK plate and thermalized at the 4k stage (to save the cold mass).
-- top Pb is inside the IVC as well, below the 10mK plate, above the TSP. It is 30cm thick 2 tonnes of mmodern Pb.
-
-==== Cryo stages? insulation?
-- Cooling is proivided by the multistage cryostat with cold masses {1ton at 4K??, 7.4\@40K, 4.5 below 50mK and 1.5 < 10mK}
-- super insulation, aluminized silicon multilayer fils on 40K and 4K to limit radiation on low temperature stages.
-- Ribbon cables bringing wiring from MC to outside, ~2600 wires thermalized by custom Cu connectors
-- Cooling power > 96W \@ 45K, 3.6W \@ 4.2K, 3mW \@ still, 125 uW at HEX and 4uW at MC -> explain these numbers more?
-- Cooling is done using three different systems,
-  - Fast cooking system circulates filtered 4He gas to IVC to pre-cool the mass down to ~50K, He acts as a heat exhcanger between different stages of the IVC, takes about 2 weeks which cut down the cooling time otherwise would have taken months (??)
-  - Then 5 pulse tube coolers, two stage cryomech, with 12W cooling power at 4.2K and 36W at 45K nominal takes over.
-    - A series of mechnical decouplers are applied below the top of cryostat where the cryogenic lines come through sand-boxed (wuth quartz powder) and all flext lines are suspended from the ceiling so as not to touch the cryostat/MSP supports.
-    - Thermalized at 40K and 4K stages using soft Cu braids.
-  - The dilution unit, a 3He/4He fridge, custom made for CUORE from Leiden cryogenics provides cooking down to base temp from about 4K.
-    - Nominal power of 3uW at 12mK (2mW at 120 mK) and measured 4uK at 10mK.
-- The first cooldown was started in Dec 2016, starting with the fast cooling system, and the PTs were turned on after 4 days reaching 3.4K in about 22 days.
-  - The DU was turned on on Jan 2017, and the system reached a based temperature of 6.9 mK after 26 days.
-- We measured the first background pulses on the 27th of Jan (26th, really ;) )
+==== Cryo Stages
+- Cooling is provided by the massive multistage cryostat, which must chill unprecedented cold masses: $~7.4$ tonnes at 40 K, $~1$ tonne at 4 K, $~4.5$ tonnes below 50 mK, and roughly 1.5 tonnes at the $tilde 10$ mK stage.
+- To limit radiative heat transfer to the lowest temperature stages, aluminized multi-layer silicon films (superinsulation) are "extensively"*?* wrapped around the 40 K and 4 K vessels.
+- Ribbon cables route the signals, carrying approximately 2600 wires from the Mixing Chamber to the room-temperature exterior. These wires are progressively thermalized at each temperature stage using custom copper connectors.
+- The multi-stage cooling process operates in three primary phases, delivering impressive cooling powers (> 96 W at 45 K, 3.6 W at 4.2 K, 3 mW at the Still, 125 $mu$W at the HEX, and 4 $mu$W at the MC):
+  - *Fast Cooling System (FCS):* The FCS initiates the cooldown by circulating filtered #super[4]He gas through the IVC. The helium gas acts as a convective heat exchanger between the different stages, pre-cooling the mass down to $~50$ K. This takes about two weeks, drastically cutting down a process that would otherwise take months relying on "*conduction alone/traditional cryogenic methods?*"
+  - *Pulse Tube (PT) Coolers:* Next, five two-stage Cryomech pulse tubes take over, each providing a nominal 12 W of cooling power at 4.2 K and 36 W at 45 K. To prevent the PTs from introducing vibrations, mechanical decouplers are employed just below the top of the cryostat. The cryogenic lines pass through quartz-powder sandboxes, and all flexible lines are suspended from the ceiling to avoid contacting the MSP. Inside, they are thermalized to the 40 K and 4 K vessels using soft copper braids.
+  - *Dilution Unit (DU):* Finally, the custom Leiden Cryogenics #super[3]He/#super[4]He dilution refrigerator drives the inner mass from 4 K down to the operational base temperature. The DU boasts a nominal cooling power of 3 $mu$W at 12 mK (2 mW at 120 mK), and has empirically measured 4 $mu$W at 10 mK.
+- The historic first cooldown commenced in December 2016. The FCS was activated first, followed by the PTs after four days, successfully cooling the system to 3.4 K in roughly 22 days.
+- The DU was engaged in January 2017, bringing the vast experimental volume down to a base temperature of 6.9 mK after 26 days.
+- The very first background pulses were successfully recorded on January 26–27, 2017.

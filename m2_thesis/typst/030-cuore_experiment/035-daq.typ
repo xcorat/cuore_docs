@@ -2,58 +2,44 @@
 
 == Electronics / DAQ / Read-out chain
 
-- The data probes connecting the thermistors come out of the cryostat and connect directly to the preamplifier with the bias circuit, which is then filtered before being digitized.
-- Data is collected by 6 computers which saves the raw waveforms while also moving through an online analysis chain for triggering & event monitoring.
-- Cuore on line check is used to visualize the data.
+- The signal readout chain begins with data probes connecting the internal thermistors to the external electronics. These signals exit the cryostat and connect directly to the preamplifiers and biasing circuits, after which they are actively filtered and digitized.
+- The digitized data stream is collected by an array of six dedicated computers. These systems save the raw waveforms to disk while simultaneously streaming the data through an online analysis pipeline for immediate triggering and event monitoring. (*Computer related stuff are on the next chapter*)
+- A dedicated "CUORE online check" interface is utilized to visualize and monitor the incoming data in real time.
 
+=== Front-End Boards
+- The Front-End (FE) boards, which house the preamplifiers and bias circuits, are securely mounted within the Faraday cage on the top floor of the CUORE hut.
+- Resting directly on the Main Support Plate (MSP), this system comprises seven racks, each holding two electronic crates to service the more than 1000 detector channels.
+- Each FE crate contains a Power Supply Unit (PSU) alongside 13 FE boards. Each board accommodates 6 amplifiers. Six multi-wire cables emerge from the cryostat per crate, with each cable instrumenting 13 bolometers.
+- On the back panel of each crate, custom routing connects 12 of the FE boards, while the 13th board connects to the final set of channels. *(Insert Diagram here)*
+- Each thermistor is biased and read out using two dedicated wires that connect directly to the back of the FE preamplifier. The signal is acquired in differential mode, which effectively suppresses common-mode noise, such as inter-channel crosstalk.
+- The preamplifier applies a primary gain factor of 210 V/V and an adjustable baseline offset. Integrated trimmers allow for dynamic adjustment of this offset and gain to correct for long-term thermal drift. The parameters for thermal drift compensation are calibrated during special runs and stored in EEPROM; thus, when the offset is adjusted, the correct compensation coefficient is automatically applied based on the ambient environmental temperature. (*umm what does trimmers do exactly?*)
+- Following the preamplifier stage, a Programmable Gain Amplifier (PGA) applies a secondary, channel-specific gain ranging from 1 V/V to 50 V/V. This ensures the signal is mapped perfectly into the optimal dynamic range of the downstream analog-to-digital converters.
+- All FE boards are digitally managed by a microcontroller communicating via a robust CAN-bus network.
 
-=== Front-end board
-
-preamplifiers and the bias cct.
-
-- FE boards are mounted inside the faraday cage on the top floor of the CUORE hut.
-- Resting on the MSP, 7 racks with two crates each connected to over 1000 channels.
-- FE crate has 13 boards with 6 amplifiers each, and a PSU, 6 cables coming from cryostat, each with 13 bolometers connect to these crates.
-- On each crate, the back panel routes connections between 12 FE boards, and the 13th connects to the last board of the crate.
-(Diagram)
-- Each thermistor is biased and read using two connections which directly connects to the back of the FE preamplifier, the signal is acquired in differential mode,
-  - Common-mode noise is suppressed (like crosstalk between channels).
-- Preamp multiply the signal by 210 V/V factor, added an offset - trimmers can be adjusted to change offset & gain to correct for thermal drift.
-  - Thermal drift compensation param are calibrated in special runs and stored in EEPROM, so when offset is set, the correct coefficient is chosen depending on the env temp.
-- After the preamp, a programmable gain amplifier amplifies the signal to move it to the optimal (dynamic) range within the ADC, and these params differ for each channel from 1V/V to 50V/V.
-- The boards are managed through a microcontroller that communicates via CAN-bus.
-
-=== Bessel Filter boards
-
-- FE output is connected via D-Sub connectors to the Bessel filter boards, two FE's into one bessel board which has 12 channels.
-- Anti-aliasing active low pass filters of Bessel-Thompson (6-pole filter) provides attenuation ~120 dB/decade with a cutoff frequency that can be set to 15, 35, 100, 120 Hz remotely (dynamically)
-- For CUORE, the cutoff frequency is chosen to be *35Hz* ?
-- These boards also communicate / are controlled through CAN-bus.
+=== Bessel Filter Boards
+- The FE analog output is routed via D-Sub connectors to the Bessel filter boards, with two FE boards feeding into a single 12-channel Bessel board.
+- These boards employ active 6-pole Bessel-Thomson low-pass filters to prevent high-frequency signal aliasing. They provide a steep attenuation of approximately 120 dB/decade.
+- The cutoff frequency can be dynamically configured remotely to 15, 35, 100, or 120 Hz. For standard CUORE data-taking, this cutoff frequency is typically optimized at 35 Hz(*? validate*).
+- Like the front-end electronics, these filter boards are controlled and monitored via the CAN-bus.
 
 === Pulser Boards
-
-- Pulser boards are the other part of the electronics that also sit in the faraday cage.
-- Sends short pulses that mimick particle interactions similar to a $delta$ pulse, which injects a given power to the Joule heaters attached to the crystals.
-- Heater pulses are flagged by the DAQ so we know exactly which energy depositions are due to injected pulses, and can be used for dynamic calibration of the detector.
-- Each board has 4 channels, and each channel pulses a whole column of detectors connecting each pulser board to one tower.
-- Amplitude and duration can be set through the CAN-bus communication to adjust the power injected to the heater, and the frequency (time delay between pulses) can also be set.
-- Usually ~3 MeV is chosen (for calibration near the ROI in 0#nbb analysis, ) but ~1 MeV and ~5 MeV is sent to check stabilization at multiple energies.
+- The pulser boards, also located within the Faraday cage, are responsible for injecting highly stable reference heat pulses into the detector array.
+- They generate short electrical pulses—approximating a Dirac $delta$ function—that dissipate a precise amount of power into the Joule heaters attached to the crystals, mimicking true particle interactions.
+- These artificial events are explicitly flagged by the DAQ, allowing analysts to isolate them for dynamic thermal stabilization and precise energy calibration.
+- Each pulser board features four channels, with a single channel wired to pulse an entire column of 13 detectors simultaneously. Consequently, one pulser board can service an entire tower.
+- Through the CAN-bus communication link, operators can tune the pulse amplitude, duration, and frequency (the time delay between pulses). The injected energy is typically set to $~3$ MeV to monitor the detector response near the 0#nbb Region of Interest (ROI). Additionally, pulses of $~1$ MeV and $~5$ MeV are routinely injected to verify detector linearity and stabilization across a broader energy spectrum.
 
 === Power Supplies
-
-- Multiple power supplies are used, to provide very low noise $plus.minus$ 5V with high stability across thermal range of the environment.
-- These filter out the noise coming from the power grid.
-- The current bias for the NTDs are supplied seperately by 2231A-30-3 Keithley triple channel DC PSU, this isolating the NTDs from the rest of the electronics, and can be controlled remotely.
+- Highly stable, low-noise power supplies provide $plus.minus 5$ V to the electronics, designed to filter out ambient power grid noise while maintaining tight stability across varying environmental temperatures.
+- Crucially, the bias current for the NTD thermistors is supplied entirely separately by a remote-controlled Keithley 2231A-30-3 triple-channel DC power supply. This setup completely galvanically (*?what?*) isolates the sensitive NTD sensors from the rest of the standard electronics chain.
 
 === NI-DAQ
-
-- An array of NI PXI 6284 digitizers are connected to the output of the Bessel filter boards.
-- They have 18-bit ADC, 2 connectors with 16 differential analog inputs & 48 digital I/O.
-- These are connected through a series of custom patch boards remap channel connectors into 3x8 conns for NI boards.
-- And are housed into 6 NI chassis with 14 slots each, with 64 boards in total which can accommodate 1024 diff channels in total.
-- Each chassis houses a controller that collect digitized data from the ADC modules through the PXI bus and send it to data reader computers using an optical link, isolating the computing system from the rest of the electronics.
-- Chassis have 10 MHz internal clock shared among boards, with one chassis acting as the 'master' chassis that connects to the others using a co-ax BNC cable to sync all of them together.
-- Maximum ADC dynamic range is 21 V ($plus.minus$ 10.5 V) with 18-bit giving a ADC resultion (??) of $tilde 80 mu$V which is negligible to typical signal noise coming from the bessel which is $tilde cal(O)$(mV).
-- The signal bandwidth extends up to ~10 Hz given the very slow decay. In CUORE-0 a sampling rate of 125 Hz was used, but in CUORE, we use the maximum available sampling frequancy, 1000 Hz digitization frequency to leverage more complicated noise rejection procedures in post DAQ through purely digital means.
-- The digitizers are also monitored for synchronicity and triggered by the master-chassis at the beginning of each data taking and periodically.
-- Proper synchronization is important for jitter calculations and thus proper characterization of coincident events.
+- The digitization stage utilizes an array of National Instruments (NI) PXI-6284 digitizers, which receive the analog output from the Bessel filter boards.
+- The routing between the systems is handled by a series of custom patch boards that remap the channel geometries into $3 times 8$ connector arrays to fit the NI inputs.
+- The PXI-6284 modules feature an 18-bit Analog-to-Digital Converter (ADC) and possess two main connectors handling 16 differential analog inputs and 48 digital I/O lines.
+- In total, 64 digitizer boards are distributed across six 14-slot NI chassis, providing the capacity to acquire up to 1024 differential channels simultaneously.
+- Each chassis is equipped with a controller that gathers the digitized data from the ADC modules via the PXI bus. This data is transmitted to the data reader computers via an optical link, ensuring the noisy computing environment remains electrically isolated from the quiet front-end electronics.
+- A 10 MHz internal clock is shared among the boards within a chassis. To maintain global synchronization, one chassis is designated as the 'master' and actively distributes its clock to the other chassis via coaxial BNC cables.
+- The ADC operates with a maximum dynamic range of 21 V ($plus.minus 10.5$ V). Coupled with the 18-bit resolution, this yields a quantization step (ADC resolution) of roughly $80$ $mu$V. This quantization noise is comfortably negligible compared to the typical intrinsic signal noise emerging from the Bessel filters, which is on the order of $cal(O)(1)$ mV.
+- Due to the exceptionally slow thermal decay times of the macroscopic(*?*) bolometers, the physical signal bandwidth extends only up to $~10$ Hz. While CUORE-0 operated with a sampling rate of 125 Hz, CUORE exploits the maximum available sampling frequency of 1000 Hz. This aggressive oversampling facilitates the implementation of advanced, purely digital noise-rejection algorithms in the offline analysis pipeline.
+- Finally, the master chassis automatically triggers and monitors the synchronicity of all digitizers at the beginning of, and periodically throughout, each data-taking run. Rigid synchronization is critical for minimizing timing jitter, which is essential for the accurate characterization of inter-channel coincident events.

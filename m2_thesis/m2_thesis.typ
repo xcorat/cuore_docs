@@ -21,7 +21,7 @@
   doc,
 )
 
-#outline(title: [Table of Contents], indent: auto)
+#outline(title: [Table of Contents], indent: auto,  depth: 3)
 
 #pagebreak()
 #outline(title: [List of Figures], target: figure.where(kind: image))

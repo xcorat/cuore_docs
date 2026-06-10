@@ -2,49 +2,40 @@
 
 == Detector Assembly
 
-- Consists of 988 TeO₂ crystals arranged into 19 towers, with each with 13 floors of 4 crystals similar to CUORE-0.
+- The CUORE detector array consists of 988 #teo2 crystals arranged into 19 vertical towers. Following the blueprint established by CUORE-0, each tower comprises 13 floors, with four crystals housed on each floor.
 
 === Crystals
+- The fundamental building block of the detector is a single #teo2 crystal instrumented with a dedicated NTD thermistor for signal readout and a silicon heater for thermal stabilization and calibration.
+- Each cubic crystal measures $5 times 5 times 5 "cm"^3$ with an exceptionally strict machining tolerance of $± 0.05$ mm per side. The crystals are composed of tellurium with a natural isotopic abundance of $~34.2%$ #te130. Each unit weighs approximately 750 g, bringing the total active #te130 mass to roughly 206 kg.
+- The crystals were manufactured between 2009 and 2013 by the Shanghai Institute of Ceramics (SICCAS) under rigorous quality and radiopurity protocols.
+  - High-sensitivity techniques, such as Inductively Coupled Plasma Mass Spectrometry (ICP-MS), were employed along the entire production line to monitor and mitigate both bulk and surface contamination.
+- To prevent cosmogenic activation, the finalized crystals were shipped to Italy exclusively by sea.
+- The growth process utilized ultra-high-purity #teo2 powder(*validate??*). Following the crystal growth and subsequent acid etching, the boules were subjected to preliminary cutting and rough shaping before undergoing final optical polishing and packaging, all of which were performed within dedicated cleanrooms.
+- A strict average surface flatness of $< 0.01$ mm was maintained to guarantee highly reproducible mechanical and thermal coupling with the surrounding tower support structures and readout chips.
+- The faces of the crystals were cut parallel to the $(0 0 1)$, $(1 1 0)$, and $(1 -1 0)$ crystallographic planes. The two faces parallel to the $(0 0 1)$ plane are structurally harder, while the remaining four faces are comparatively softer (*?Hard/soft here means rough, shiny surfaces, correct?*).
+- Upon arrival, the crystals were triple-vacuum-packed and stored underground in the parts storage hut to isolate them from environmental and cosmogenic backgrounds.
+- Ten crystals from each production batch were cryogenically tested in the CUORE Crystal Validation Runs (CCVR) to verify their radiopurity and bolometric performance prior to integration.
 
-- The Basic unit of the detector is the crystal with its attached NTD thermistor and the heater/pulser for stabilization/calibration)
-each crystal is 5cm×5cm×5cm w/ TeO₂ crystal w/ natural abundant Te (@ 34.0X%) ~ 206 kg total, with 750g ± (?), with very low tolerance in size, each side at 50mm ± 0.05 mm.
-- They are instrumented with the NTD thermistor and a silicon pulser each.
-// - Mounted on to the copper assembly with PTFE spacers (?)
-- crystals were manufactured from 2009-2013 by Shanghai Inst Ceramics, SICCAS, w/ rigorous quality & radiopurity controls.
-  - High-sensitivity radiopurity tests were done to guard against and measure the bulk and surface contamination (ICP-MS) along the entire production line.
-- Final crystals were shipped to Italy by sea to minimize cosmogenic activation
-- crystals were grown from high purity TeO₂, starting with (purity??) powder, acid etched(??)
-- After growth they were subject to cutting and rough processing before the final polishing and packaging. All were done in dedicated clean rooms.
-- Average flatness < 0.01 mm to ensure reproducible thermal and mechanical coupling with the tower support structures and chips.
-- the faces of the crystals (cut) to be parallel to (0 0 1), (1 1 0) and (1 -1 0) crystal planes. two faces parallel to (0 0 1) are hard(less transparent? rough?) & rest softer.
-- The crystals were stored underground triple vacuum packed (?? this is true for for all comps?) in the parts storage hut.
-- ten crystals from each production batch were tested cryogenically to test for radiopurity & cryogenic/bolometric performance (in the CCVR - CUORE Crystal Validation Runs) tests.
-
-=== NTD
-- NTD Germanium thermistor serves as the temperature sensor as desctibed in *XXX*, converting the signal to electrical signal readable from outside. — room temp electronics).
-- Able tp detect a typical temperature change of ~ 0.1 μK, which is crucial in determining SNR and hence the resolution & threshold.
-- NTDs are made using Germanium single crystals doped by exposure to thermal neutrons,
-- (mentioned before: R(T) = R₀ e^(T₀/T); T₀ → by doping level, (neutron fluence), R₀ → doping level + geometry. targets T₀=4K, R₀=1kΩ), ~0.5 Ω \@ 10mK
-- Irradiated thermistors were cut, optically polished, etched with nitric acid & HF. Then Boron implanted (compensation?), then metallized w/ palladium & gold \@ LBNL.
-- Chip dimensions: 3mm × 2.9mm × 0.9 (or 1?) mm) with gold pads along the sides (0.2 × 3.0) on parallel sides. Gold pads wrap around the sensor, this was chosen after rigorous testing to be compatible with bonding
-- Gold wires with a diameter of 25 μm ( $<1.0 times 10^(-9)$ g/g #th232 ) is bonded to the gold pads connecting them to the Cu pads. Each chip has about (does the number of bonds change the average pulse characteristics?) 5-10 (8? usually 3-4 each side) wires bonded for redundancy.
-- Some were selected to test down to 12mK and register  < $1 times 10^(-9)$ g/g #u238
-- measured ~ R₀=3.84 \@ T₀=1.13 Ω → ~370 MΩ \@ 10 mK
-- *ADD* GLUING? SPOTS?
+=== NTD Thermistors
+- Neutron Transmutation Doped (NTD) Germanium thermistors serve as the primary temperature sensors (as described in Section *XXX*), converting subtle thermal fluctuations into electrical signals read by room-temperature electronics.
+- These sensors possess extraordinary sensitivity, capable of detecting a typical temperature change of $~0.1$ $mu$K, which is critical for maximizing the Signal-to-Noise Ratio (SNR) and defining the detector's energy resolution and threshold.
+- The NTDs are fabricated from single-crystal Germanium doped via exposure to a thermal neutron flux. As established previously, the resistance follows $R(T) = R_0 e^((T_0"/"T)^gamma)$, where $T_0$ is defined by the neutron fluence (doping level), and $R_0$ is dictated by a combination of the doping level and the sensor geometry. The target parameters were $T_0 = 4$ K and $R_0 = 1$ k$Omega$, yielding an operational resistance of $~0.5$ $Omega$ at 10 mK.
+- During fabrication, the irradiated germanium wafers were cut, optically polished, and etched with a mixture of nitric and hydrofluoric acids. To ensure reliable electrical contact, they were Boron-implanted and metallized with layers of palladium and gold at Lawrence Berkeley National Laboratory (LBNL).
+- The final chip dimensions are $3 times 2.9 times 0.9 "mm"^3$. They feature $0.2 times 3.0 "mm"^2$ gold pads that wrap around the parallel sides of the sensor. This wrap-around geometry was selected after rigorous testing to ensure optimal compatibility with the wire bonding process.
+- High-purity gold wires with a 25 $mu$m diameter (certified to $< 1.0 times 10^(-9)$ g/g of $232$Th) bond the thermistor pads to the readout copper pads. For electrical redundancy and mechanical stability, each chip is secured with approximately 5 to 10 wire bonds.
+- Sample thermistors were cryogenically tested down to 12 mK and registered remarkable radiopurity ($< 1 times 10^(-9)$ g/g of $238$U). In practice, at the 10 mK base temperature, their measured operating resistance reaches $~370$ M$Omega$ (with operational parameters $R_0 = 3.84$ $Omega$ and $T_0 = 1.13$ K).
+- *[Note to be expanded]*: The NTDs are precisely affixed to the crystals using a specialized gluing matrix consisting of highly reproducible automated glue spots.
 
 === Heaters
-
-- as was done in CUORECINO and CUORE-0, we use silicone heaters to calibrate the detector by periodically injecting known energy pulses into each crystal tower.
-- These energy pulses emulate energy deposit from decays, (300keV, 3MeV? -- what are the preset values we used?)
-- There are 2.33 × 2-41 × 0.52 mm3 "heavily doped" meander through standard silicone resistors made through a planar process(?).
-- 4 Al pads allow for resistances 100 kΩ, 200 kΩ, 300 kΩ and contaminant levels below 8×10-11 / 1.7×10-10 g/g  for #th232 & #u238
+- Following the methodology established in CUORECINO and CUORE-0, silicon heaters are used to dynamically stabilize and calibrate the detector array by periodically injecting known energy pulses into each crystal.
+- These heat injections are meant to emulate "the thermal profile of a particle decay" (*?*) energy deposition (with preset calibration energies spanning from $~300$ keV to 3 MeV).
+- The heaters are heavily doped silicon chips measuring $2.33 times 2.41 times 0.52 "mm"^3$, featuring a meander-like resistive structure fabricated via standard planar semiconductor processing.
+- Each heater is equipped with four aluminum contact pads, allowing it to be bonded in different configurations to provide a tunable resistance of 100 k$Omega$, 200 k$Omega$, or 300 k$Omega$. They exhibit exceptional radiopurity, with contamination levels strictly below $8 times 10^(-11)$ g/g for $232$Th and $1.7 times 10^(-10)$ g/g for $238$U.
 
 === Cu Support Structure and Towers
-
-- Cu used for structure to shield the largest inactive mass and surface that is close to the crystal.
-- these are used to assemble 2×2×13 towers of 52 crystals.
-- The frame of the tower made of NOSV Cu, and also acts as a heat sink.
-- crystals are held in frames with PTFE spacers, weak thermal link to heat bath
-- heaters & NTD's are attached to copper-nickel flexible polythene naphthalene PCB strips w/ high density Cu wires (PENCu cables)
-- each cable instruments 3-4 sensor fibers and total 9 per tower inc. other sensors like the (top?/) bottom thermistor that is attached to the copper frame (?)
-- past top of the tower ribbons plugged into NTD crystal ribbon cables after
+- Copper was exclusively selected for the mechanical framework because it acts both as an efficient thermal sink and as a radiopure shield for the largest inactive surfaces immediately facing the crystals.
+- These structural elements are used to assemble the 19 towers, each holding 52 crystals in a $2 times 2 times 13$ configuration.
+- The tower frames are machined from high-purity NOSV copper. The crystals are securely suspended within these frames using custom polytetrafluoroethylene (PTFE) spacers, which simultaneously clamp the absorbers and establish a precisely calibrated, weak thermal link to the copper heat bath.
+- The NTDs and heaters are electrically connected via flexible printed circuit board (PCB) strips made of polyethylene naphthalate (PEN) with high-density copper tracks, commonly referred to as PEN-Cu cables.
+- Each PEN-Cu cable instruments 3 to 4 sensors, with a total of 9 cables routed down each tower. These handle both the bolometer signal lines and auxiliary diagnostic sensors, such as the top and bottom thermistors attached directly to the copper frame to monitor thermal gradients.
+- Above the top floor of the tower, these flexible ribbons are plugged into dedicated transition ribbon cables that route the signals continuously outward through the cryostat stages.

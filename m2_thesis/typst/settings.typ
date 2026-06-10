@@ -45,18 +45,20 @@
     ]
   )
 
-  show heading.where(level: 3): it => block(
+  show heading.where(level:3): it => block(
     above: 1.25em,
     below: 0.75em,
     text(size: 14pt, weight: "bold")[
-      #if it.numbering != none {
-        counter(heading).display(it.numbering)
-        "."
-        h(0.5em)
-      }
       #it.body
     ]
   )
 
+  show heading.where(level:4): it => block(
+    above: 1.25em,
+    below: 0.75em,
+    text(size: 12pt, weight: "semibold", style: "oblique")[
+      #it.body
+    ]
+  )
   doc
 }
