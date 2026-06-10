@@ -63,3 +63,14 @@
 - The historic first cooldown commenced in December 2016. The FCS was activated first, followed by the PTs after four days, successfully cooling the system to 3.4 K in roughly 22 days.
 - The DU was engaged in January 2017, bringing the vast experimental volume down to a base temperature of 6.9 mK after 26 days.
 - The very first background pulses were successfully recorded on January 26–27, 2017.
+
+=== Calibration System
+
+- Proper calibration of energy deposited from the pulse parameters to energy is vital for achieving target resolution / sensitivity.
+- The detector response must be modeled accurately for this, and require a set of peaks with enough statistics.
+- Calibration is done by identifying the peaks in the spectrum of pulse amplitudes and fitting an analytical function that convert the amplitude spectrum into energy using the identified peaks.
+- The CUORE deploy calibration sources and collect spectra specifically for this task (called calibration runs).
+- First 2 datasets used DCS (Detector Calibration System) that deployed thoriated tungsten (#th232) within the cryogenic detector volume providing uniform illumination ($tilde 100"mBq"$) - high enough statistics w/o too much pileup.
+- #th232 chain introduces #tl208 decay peak (main) at 2615 keV, and is (one of) the major calibration peaks used in CUORE due to given it is the closest to the $Q_(beta beta)$ value.
+- After first 3 datasets, DCS was retired and replaced with an external calibration system (EDCS) which deployed calibration strings outside the cryostat's Pb shield and uses #co60 sources in addition to the #th232 and introduces the two $gamma$ peaks from #co60 to the calibration spectrum (the first dataset of EDCS used only #th232).
+- EDCS illuminates inner bolometers less, $tilde 40 - 50 "mHz"$ for outer channels or $tilde 10 - 20"mHz"}$ for inner.

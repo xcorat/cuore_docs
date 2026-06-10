@@ -16,4 +16,4 @@
 
 #include "./030-cuore_experiment/034-setup.typ"
 
-#include "030-cuore_experiment/035-daq.typ"
+#include "030-cuore_experiment/035-electronics.typ"
