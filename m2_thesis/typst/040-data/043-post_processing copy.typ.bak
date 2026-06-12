@@ -1,0 +1,117 @@
+#import "../common.typ": *
+
+=== MULTIPLICITY
+- Identifying coincident events can both enhance 0#nbb search as well as provide information for multiple other analyses, help understand detector+param
+- M1 0#nbb \~ 88\%. reduce background by using anti-coincid. help remove $alpha$'s at surface + $gamma$'s from other peaks
+- coincidence window taken narrow to reduce random coinc.
+
+- Characterize the detector time response, differ due to pulses characteristic
+  - we need to calculate $Delta T$ between events, differ for all calorimeters
+  - Multiplicity defined by $Delta t^*$ and the threshold of event selection for all calorimeters
+  - optimizing $Delta t^*$ : $M 2$ within $0.5s$ -- $E_1, E_2 > 30 "keV"$, $E_1+E_2 tilde 2615$
+
+- characteristic rise time of detectors differ, wide $Delta t$ spectrum -> true coincidences
+  - depends on operational temperature of detectors
+  - call it 'delay' $t_"delay"$
+  - correct for delay for each channel
+-  calculate delay using: coincidence events (primary) 2615 peak for selected calorim or low stats for above
+- Correcting $Delta t^*$ - $Delta t$
+- *Method 1:*
+  - M2 events \@ $2615 plus.minus 25$ keV
+  - For each "adjacent pair" relative delay by averaging $Delta t$
+- *Method 2:* Calc pulser events (high stats) trigger pos vs max pulsetime
+  - use mean rise time from above as characteristic rise-time relative delay
+  - can be used for non-adjacent pairs.
+
+- Calculate absolute delay \~ relative delays between calorimeter pairs in tower -- minimized error on absolute delay -- tied to the reference channel
+- Calculate $"ch" - "ch"_"ref"$ by summing absolute delay as risetime proxy
+
+- Store coincidence data for each given multiplet:
+  - Multiplicity, ch-ds, sync Tstamp, energy, TotalEnergy, time ordering index
+- other params used
+  - E-threshold -- calorimeter dependent for low-E (OT dependant)
+  - Running Window (bool?) $Delta t^*$ window is 'running' ($10 plus.minus 5 "ms",  60 plus.minus 30 "BM"$
+  - Distance cut - 150 mm
+  - Running radius
+  - *THESE NUMBERS NEEDS TO MATCH 1 TON-YR*
+  -0#nbb BM uses 40 keV
+  - 10 ms coin. for 0#nbb target higher efficiency
+  - 60 ms coin for BM {more accurate over higher E}
+  - Running window for 0#nbb only
+  - Running radius of 150mm always
+  - for $< 100$ keV events (used for DM & axions), use calorimeter dependent thresholds
+
+
+=== PSA - Pulse Shape Discrimination
+- identify & remove atypical pulseshapes and related events
+  - Compare pulse $arrow(v)$ with average pulse $arrow(v)_"AP"$
+  - Reconstruction Error:
+    $ "RE" = sqrt(sum_(d=1)^D (v_i - (arrow(v) dot arrow(v)_"AP") / (v_"AP,i") )^2 ) $
+  - Energies around 100 keV - 2615 keV.
+    - RE quantify differences between pulse shapes
+  - Fit for RE vs E with pol2 using signal-like band per ch-ds (lower RE bn)
+  - look at scale w.r.t best fit from above, characterize the RE.
+    - $"NRE" = ("RE" - f(E)) / "MAD"(E)$ cut on NRE using $"FOM" = epsilon / sqrt(epsilon_"bkg")$
+    - $epsilon$: efficiency of accepting signal/background events.
+    - use only half the data to calculate FOM (so not biased!)
+
+=== BLINDING
+- Analysis is done using salted data in order to remove biases and optimize our choices to detect a possible 0#nbb signal.
+- exchange \~ (10 - 12.5% - randomly chosen) fraction of 2615 events with $Q_(beta beta) plus.minus 50$ keV region around either peaks shifted by $Delta t$ between.
+- other peak searches also blinded similarly.
+
+=== DETECTOR RESPONSE
+- We fit 0#nbb signal ROI as a flat bkg + peaks \@ $Q_(beta beta)$ & #co60 sum peak
+- *Lineshape*
+  - 3 gauss fit per ch-ds using 2615 peak
+  - fit done multi-iterations ($A_(L|R) = 0$ for $< 10^(-6)$, expanded params for railing)
+  - 2615 peak shape [2530 - 2720] keV -  6 components (2615, compton, x-ray escape, flat-bkg, +)
+  - photo peak ch-ds level, others tower-ds level
+  - since low stats do simultaneous fit tower-ds level
+  - ~60 chs removed due to poor stats
+
+- *Energy scaling:* look at energy dependence of the LS params per ch-ds $mu , sigma$
+  - $mu$, $sigma$ is measured using calibration data ch-ds, scaling is done per ds
+  - all chs are summed to one spectrum per ds and scaling params are fitted
+  - $sigma(E) = sqrt((sigma_E^2) + sigma_0^2)$ -> $sigma_0$ energy independant term
+  - and $sigma_E$ = $sigma_p(E) = sqrt(sigma_"p,0"^2 + R_sigma(E) dot (sigma_c^2 - sigma_"c,0"^2))$
+  - $sigma_"p,0", sigma_"c,0"$ => baseline resolutions using noise events (phys / calib), $mu_P(E) = R_mu(E) dot E$
+  - $R_mu$, $R_sigma$ dataset level fit parameter ($R_sigma$, sigmoid -- 0 near 1000 keV, quadratic after)
+    - $Delta(E) = mu_P(E) - E$ pol2
+    - $Q_"fit" = (mu_c)/2615 dot Q_(beta beta) + Delta(Q_(beta beta))$ ; $Delta (Q_(beta\beta)$ per ch-ds
+    - $Q_(beta\beta)$ global config)
+    - priors (discuss)
+
+=== EXPOSURE & EFFICIENCIES
+  - Exposure = $M dot T$ -> live time x active mass; based on time based cuts
+  - event-based cuts efficiencies.
+  - Bad Intervals - disturbances to detector operations - use CORC
+    - Bad for Analysis init / final few seconds, channels rejected from entire ds's
+  - Pulser crosstalk exposure correction
+    - remove channels w/ crosstalk of pulser when pulser is fired
+    - $plus.minus 1$ s pulser firing time crosstalk window "good signal events" - $N_"tag"$
+    - 1s preceding crosstalk window, control window  $n_"control"$ (signal events)
+      - $P_"x,cal" = (N_"tag" - N_"control") / N_"pulser cycles"$ probability of false pulse in pulser window (crosstalk)
+      - $f_p = zeta_"ch,cd" / zeta_"ch,tot" = 1/T sum_"cal"(P_"x,cal" delta t_"cal"}$ $delta t_"cal"$- t-interval for each other towers.
+        - \~ 20 has $f_p > 10%$ for any given dataset.
+
+  - bad interval, bad analysis $tilde 9%$, pulser xtalk $tilde 1%$
+    - 567kg.yr = $zeta_(#teo2)$ Analysis exposure (6-15% across datasets)
+  - *Base cuts*: basic data quality cuts (baseline stab, noise events, pileup, spurious events)
+  - use heater pulses of known amplitude to measure the accepted fraction
+  - Detection efficiency : trigger efficiency
+  - Pileup Rejection efficiency : multiple signal / signal + heater events
+    - $P("noPulsar"|"Signal") tilde.eq 1 - w/T_P$  $w = 10s$, $T_P$ pulser firing window/between pulsers.
+    - $epsilon_"PU" = N_p "trig,no-pileup"  / N_"p trig" times (T_P - w) / T_P$ (pulser pileup)
+
+=== Efficiency Measurements
+  - *Energy Reconstruction efficiency:* efficiency of reconstructing event with correct energy using pulser events w/ known energy. (events within $3sigma$ of mean)
+    $epsilon_"FinRecon" = N_p^(3 sigma) / N_p^(10 sigma)$ (10$sigma$ to remove energy reconstructed at 0 or default)
+  - *Base cuts efficiency* = detection eff $times$ pileup rej eff $times$ energy reconstruction efficiency
+  - $epsilon_"BC, DS-ch" = sum_"run" n_"pass" / sum_"run" (n_"pass" + n_"fail")$, ($n_"pass/fail"$ -> pulser events)
+  - final ds level base cuts: combine 3 cuts average (weighted) over channels create distribution $mu$, $sigma$ sample (?)
+
+
+  - *Anti-coincident efficiency:* use #k40 for AC efficiency calc events. $M > 1$ in 1460 keV is accidental coincidents
+  -$ L_"eff" = product_"l,c,v" e^(-lambda_i) lambda_i^(n_i) / n_i! $
+    - Left, center, right counting analysis using poisson prob for events in l, r & center with respect to center.

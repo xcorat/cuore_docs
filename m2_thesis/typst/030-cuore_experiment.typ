@@ -17,3 +17,7 @@
 #include "./030-cuore_experiment/034-setup.typ"
 
 #include "030-cuore_experiment/035-electronics.typ"
+
+#include "030-cuore_experiment/036-daq.typ"
+
+#include "030-cuore_experiment/037-commissioning.typ"

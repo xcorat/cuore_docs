@@ -60,9 +60,6 @@
   - *Fast Cooling System (FCS):* The FCS initiates the cooldown by circulating filtered #super[4]He gas through the IVC. The helium gas acts as a convective heat exchanger between the different stages, pre-cooling the mass down to $~50$ K. This takes about two weeks, drastically cutting down a process that would otherwise take months relying on "*conduction alone/traditional cryogenic methods?*"
   - *Pulse Tube (PT) Coolers:* Next, five two-stage Cryomech pulse tubes take over, each providing a nominal 12 W of cooling power at 4.2 K and 36 W at 45 K. To prevent the PTs from introducing vibrations, mechanical decouplers are employed just below the top of the cryostat. The cryogenic lines pass through quartz-powder sandboxes, and all flexible lines are suspended from the ceiling to avoid contacting the MSP. Inside, they are thermalized to the 40 K and 4 K vessels using soft copper braids.
   - *Dilution Unit (DU):* Finally, the custom Leiden Cryogenics #super[3]He/#super[4]He dilution refrigerator drives the inner mass from 4 K down to the operational base temperature. The DU boasts a nominal cooling power of 3 $mu$W at 12 mK (2 mW at 120 mK), and has empirically measured 4 $mu$W at 10 mK.
-- The historic first cooldown commenced in December 2016. The FCS was activated first, followed by the PTs after four days, successfully cooling the system to 3.4 K in roughly 22 days.
-- The DU was engaged in January 2017, bringing the vast experimental volume down to a base temperature of 6.9 mK after 26 days.
-- The very first background pulses were successfully recorded on January 26–27, 2017.
 
 === Calibration System
 

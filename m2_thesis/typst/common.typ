@@ -7,3 +7,4 @@
 #let tl208 = [#super[208]Tl]
 #let co60 = [#super[60]Co]
 #let ag110m = [#super[110m]Ag]
+#let k40 =  [#super[40]K]
