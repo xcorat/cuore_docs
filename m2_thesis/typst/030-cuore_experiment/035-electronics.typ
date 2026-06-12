@@ -1,7 +1,7 @@
 #import "../common.typ": *
 
 == Electronics and Read-out chain
-
+#footnote[better bridge? also the cables coming out comes from which stage? which stages connect to pencu cables and then what comes out?]
 - The signal readout chain begins with data probes connecting the internal thermistors to the external electronics. These signals exit the cryostat and connect directly to the preamplifiers and biasing circuits, after which they are actively filtered and digitized.
 - The digitized data stream is collected by an array of six dedicated computers. These systems save the raw waveforms to disk while simultaneously streaming the data through an online analysis pipeline for immediate triggering and event monitoring. (*Computer related stuff are on the next chapter*)
 - A dedicated "CUORE online check" interface is utilized to visualize and monitor the incoming data in real time.
@@ -12,19 +12,19 @@
 - Each FE crate contains a Power Supply Unit (PSU) alongside 13 FE boards. Each board accommodates 6 amplifiers. Six multi-wire cables emerge from the cryostat per crate, with each cable instrumenting 13 bolometers.
 - On the back panel of each crate, custom routing connects 12 of the FE boards, while the 13th board connects to the final set of channels. *(Insert Diagram here)*
 - Each thermistor is biased and read out using two dedicated wires that connect directly to the back of the FE preamplifier. The signal is acquired in differential mode, which effectively suppresses common-mode noise, such as inter-channel crosstalk.
-- The preamplifier applies a primary gain factor of 210 V/V and an adjustable baseline offset. Integrated trimmers allow for dynamic adjustment of this offset and gain to correct for long-term thermal drift. The parameters for thermal drift compensation are calibrated during special runs and stored in EEPROM; thus, when the offset is adjusted, the correct compensation coefficient is automatically applied based on the ambient environmental temperature. (*umm what does trimmers do exactly?*)
+- The preamplifier applies a primary gain factor of 210 V/V and an adjustable baseline offset. Integrated trimmers#footnote[what are trimmers exactly? explain briefly?] allow for dynamic adjustment of this offset and gain to correct for long-term thermal drift. The parameters for thermal drift compensation are calibrated during special runs and stored in EEPROM; thus, when the offset is adjusted, the correct compensation coefficient is automatically applied based on the ambient environmental temperature. (*umm what does trimmers do exactly?*)
 - Following the preamplifier stage, a Programmable Gain Amplifier (PGA) applies a secondary, channel-specific gain ranging from 1 V/V to 50 V/V. This ensures the signal is mapped perfectly into the optimal dynamic range of the downstream analog-to-digital converters.
 - All FE boards are digitally managed by a microcontroller communicating via a robust CAN-bus network.
 
 === Bessel Filter Boards
 - The FE analog output is routed via D-Sub connectors to the Bessel filter boards, with two FE boards feeding into a single 12-channel Bessel board.
 - These boards employ active 6-pole Bessel-Thomson low-pass filters to prevent high-frequency signal aliasing. They provide a steep attenuation of approximately 120 dB/decade.
-- The cutoff frequency can be dynamically configured remotely to 15, 35, 100, or 120 Hz. For standard CUORE data-taking, this cutoff frequency is typically optimized at 35 Hz(*? validate*).
+- The cutoff frequency can be dynamically configured remotely to 15, 35, 100, or 120 Hz. For standard CUORE data-taking, this cutoff frequency is typically optimized at 120Hz.
 - Like the front-end electronics, these filter boards are controlled and monitored via the CAN-bus.
 
 === Pulser Boards
 - The pulser boards, also located within the Faraday cage, are responsible for injecting highly stable reference heat pulses into the detector array.
-- They generate short electrical pulses—approximating a Dirac $delta$ function—that dissipate a precise amount of power into the Joule heaters attached to the crystals, mimicking true particle interactions.
+- They generate short electrical pulses—approximating a Dirac $delta$ function—that #footnote[actually a rectangular pulse,] dissipate a precise amount of power into the Joule heaters attached to the crystals, mimicking true particle interactions.
 - These artificial events are explicitly flagged by the DAQ, allowing analysts to isolate them for dynamic thermal stabilization and precise energy calibration.
 - Each pulser board features four channels, with a single channel wired to pulse an entire column of 13 detectors simultaneously. Consequently, one pulser board can service an entire tower.
 - Through the CAN-bus communication link, operators can tune the pulse amplitude, duration, and frequency (the time delay between pulses). The injected energy is typically set to $~3$ MeV to monitor the detector response near the 0#nbb Region of Interest (ROI). Additionally, pulses of $~1$ MeV and $~5$ MeV are routinely injected to verify detector linearity and stabilization across a broader energy spectrum.

@@ -11,7 +11,7 @@
 - All Data Readers interface with the Event Builder via a local network switch (*router?*). Through this network infrastructure, operators can remotely control all the electronics, including starting or stopping data runs and executing Working Point (WP) measurements.
 
 === Software - Apollo
-- **Apollo** is the custom data acquisition framework developed for CUORE to handle both system control and data collection. Written in C++, Apollo interfaces directly with the National Instruments (NI) hardware drivers and leverages the ROOT data analysis framework.
+- *Apollo* is the custom data acquisition framework developed for CUORE to handle both system control and data collection. Written in C++, Apollo interfaces directly with the National Instruments (NI) hardware drivers and leverages the ROOT data analysis framework.
 - The `DataReader` is the primary process running on the reader computers. It receives incoming data and writes it to shared memory, making it seamlessly accessible to the Event Builder and auxiliary processes, such as the online oscilloscope used for real-time visualization.
 - The reader process is also responsible for executing the software triggering algorithms.
 - The shared memory is structured as a circular buffer that all processes access concurrently. Strict pointer management ensures that data is accessed in the correct chronological sequence eliminating the risk of downstream processes reading incomplete or unverified data.

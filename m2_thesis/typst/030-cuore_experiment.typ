@@ -7,6 +7,11 @@
   - CUORE is the culmination of a decades-long saga of bolometric 0#nbb searches. Along the way, successive experiments solved numerous engineering challenges through incremental improvements in background radiation mitigation and noise reduction.
   - The experiment is housed under approximately a kilometer of rock at the Laboratori Nazionali del Gran Sasso (LNGS), which is considered the world's largest deep underground laboratory facility.
 
+  _TODO: Add sentences related to other sections and connect these_
+  - _With 988 TeO2 crystals as the main source volume and the absorber,_
+  - _Uses NTDs working at 10mK, within multistage cryostat that includes shields._
+  - _housed in CUORE Hut and multiple mechanisms to isolated noise and suppress external radiation._
+
 #include "./030-cuore_experiment/031-intro.typ"
 
 == Bolometric Method
