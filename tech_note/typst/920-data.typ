@@ -3,7 +3,7 @@
 
 = Data <data>
 
-This analysis utilizes our observed data and the corresponding Monte Carlo simulations for the expected background and #ndbd signal equivelant to the CUORE 1 ton-yr Background Model (BM) data release. This includes 15 datasets and 84 background source simulations in addition to the simulated signal. 
+This analysis utilizes our observed data and the corresponding Monte Carlo simulations for the expected background and #ndbd signal equivelant to the CUORE 1 ton-yr Background Model (BM) data release. This includes 15 datasets and 84 background source simulations in addition to the simulated signal.
 
 To optimize computationally heavy procedures within the Bayesian framework, intermediate staging files are generated containing only the relevant M2 events within the region of interest, and actual fit inputs are all converted to numpy compatible formats.
 
@@ -13,7 +13,7 @@ The analysis incorporates 15 datasets (ds3601-ds3615), constituting an exposure 
 
 Consistent with the 1 ton-yr BM and low-energy analyses, a 30 ms temporal coincidence window is applied (as opposed to the 5 ms window used in the M1 analysis which focuses on reducing coincident backgrounds). Events are classified as Multiplicity 2 (M2) if they trigger exactly two crystals with a center-to-center distance of less than 150 mm. Please refer to the Internal Note 137D for a detailed review of the Background Model and the data processing steps #footnote[which technote details the data processing steps for 1ton-yr?].
 
-Standard data quality criteria are enforced, including basic pulse quality validation, pileup rejection, Principal Component Analysis (PCA) profiling and lineshape quality. Both events in an M2 pair must independently pass all selection criteria; otherwise, the entire multiplet is rejected #footnote[*CHECK: this is different from our initial M2 analysis with the PRL data which removed only the events where the main event failed the PCA cut. The background model applies the filter on both, and following that should change the efficiency calculation that I haven't fully incorporated here.*]
+Standard data quality criteria are enforced, including basic pulse quality validation, pileup rejection, Principal Component Analysis (PCA) profiling and lineshape quality. Both events in an M2 pair must independently pass all selection criteria; otherwise, the entire multiplet is rejected.
 
 #align(center)[
 #box(width: 90%, [
@@ -35,7 +35,7 @@ Standard data quality criteria are enforced, including basic pulse quality valid
 ])
 ]
 
-After these cuts, the overall selection efficiency is 2.51% (M2 selection 2.57%, PCA 97.7%). #footnote[Add the efficiencies table here? or should it be after model selection?]
+After these cuts, the overall selection efficiency is 3.80% (M2 selection 3.85%, PCA 98.8%). All these cuts (including the PCA efficiency) is applied by ares, and already filtered in the simulation files.
 
 == Simulations <sec:simulations>
 
@@ -53,4 +53,3 @@ After these cuts, the overall selection efficiency is 2.51% (M2 selection 2.57%,
 Because this analysis utilizes only a small subset of the total CUORE exposure, we reduce the full experimental data into ROOT files containing a minimal set of branches. These *staging files* apply the aforementioned selection criteria for both data and simulations and serve as the foundational inputs, drastically reducing the computing load when loading many files in parallel.
 
 Given that the Bayesian fit evaluates binned background spectra alongside event-level data, the framework generates optimized binned histograms from the staging files depending on the selected model configuration. These are saved in HDF5 format as *input files*, while the event lists are retained. Since the analytical framework (`qpym2`) is implemented in Python, saving these structures natively enables rapid memory loading as `numpy` arrays for iterative model testing and evaluations.
-

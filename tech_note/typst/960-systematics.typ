@@ -1,6 +1,8 @@
 #import "common.typ": *
+#import "results.typ": *
 #import "@preview/akatable:0.1.0": academic-table
 
+#let sr90 = [#super[90]Sr]
 #let btable(..args) = block(stroke: (bottom: 1.5pt))[
   #set table(
     stroke: (x, y) => (
@@ -14,96 +16,6 @@
   )
   #table(..args)
 ]
-
-// ── Systematic fit values ──────────────────────────────────────────────────
-// Source of truth: output/syst_rate_results.md  (2026-05-31)
-// Placeholder "?" marks values not yet extracted from fit output files.
-
-// Nominal fit (reference: cs=1.0, gamma10_v150, u1740)
-#let nom_raw_mode = "11.70" //y
-#let nom_raw_hdi_l = "4.95" //y
-#let nom_raw_hdi_r = "20.38" //y
-#let nom_bc_mode = "15.26"//y
-#let nom_bc_hdi_l = "8.59"//y
-#let nom_bc_hdi_r = "23.81"//y
-
-// BM MC statistical
-#let bmmc_raw_mode = "10.90"//y
-#let bmmc_raw_hdi_l = "3.89"//y
-#let bmmc_raw_hdi_r = "18.91"//y
-#let bmmc_raw_dmode = "0.80"//y
-#let bmmc_raw_dhdi_l = "-1.06"//y
-#let bmmc_raw_dhdi_r = "-1.47"//y0
-#let bmmc_bc_mode = "14.47"//y
-#let bmmc_bc_hdi_l = "7.55"//y
-#let bmmc_bc_hdi_r = "22.36"//y
-#let bmmc_bc_dmode = "0.79"//y
-#let bmmc_bc_dhdi_l = "-1.04"//y
-#let bmmc_bc_dhdi_r = "-1.45"//y0
-
-// LSS ΔQ (±1σ)
-// #let lss_dq_raw_mode = "12.13"
-// #let lss_dq_raw_hdi_l = "3.08"
-// #let lss_dq_raw_hdi_r = "23.37"
-// #let lss_dq_raw_dhdi_l = "-1.86"
-// #let lss_dq_raw_dhdi_r = "+3.00"
-// #let lss_dq_bc_mode = "15.68"
-// #let lss_dq_bc_hdi_l = "6.76"
-// #let lss_dq_bc_hdi_r = "26.77"
-#let lss_dq_bc_dhdi_l = "-3.59"
-#let lss_dq_bc_dhdi_r = "+4.74"
-
-// LSS σ-scaling (+1σ)
-// #let lss_sscl_raw_mode = "12.41"
-// #let lss_sscl_raw_hdi_l = "4.16"
-// #let lss_sscl_raw_hdi_r = "21.09"
-// #let lss_sscl_raw_dhdi_l = "-0.78"
-// #let lss_sscl_raw_dhdi_r = "+0.71"
-// #let lss_sscl_bc_mode = "15.96"
-// #let lss_sscl_bc_hdi_l = "7.82"
-// #let lss_sscl_bc_hdi_r = "24.51"
-#let lss_sscl_bc_dhdi_l = "-1.24"
-#let lss_sscl_bc_dhdi_r = "+1.17"
-
-// Signal energy shift (Δ = 1.0 keV/MeV)
-#let ndbdshift_raw_mode = "10.62"//y
-#let ndbdshift_raw_hdi_l = "4.53"//y
-#let ndbdshift_raw_hdi_r = "18.86"//y
-#let ndbdshift_raw_dmode = "-1.09"//y
-#let ndbdshift_raw_dhdi_l = "-0.42"//y
-#let ndbdshift_raw_dhdi_r = "-1.51"//0
-#let ndbdshift_bc_mode = "14.19"//y
-#let ndbdshift_bc_hdi_l = "8.18"//y
-#let ndbdshift_bc_hdi_r = "22.32"//y
-#let ndbdshift_bc_dmode = "-1.07"//y
-#let ndbdshift_bc_dhdi_l = "-0.42"//y
-#let ndbdshift_bc_dhdi_r = "-1.49"//0
-
-// Cobalt shift selection (likelihood-weighted marginalisation) — bc only
-#let cobalt_bc_mode = "15.83"//y
-#let cobalt_bc_hdi_l = "8.24"//y
-#let cobalt_bc_hdi_r = "23.54"//y
-#let cobalt_bc_dhdi_l = "-0.35"//y
-#let cobalt_bc_dhdi_r = "-0.26"//y0
-
-// Bias correction (central vs. covariance-sampled BC parameters)
-// raw row = nominal raw (BC does not affect pre-correction posterior)
-#let biascorr_raw_mode = nom_raw_mode
-#let biascorr_raw_hdi_l = nom_raw_hdi_l
-#let biascorr_raw_hdi_r = nom_raw_hdi_r
-#let biascorr_bc_mode = "15.98"//y
-#let biascorr_bc_hdi_l = "8.43"//y
-#let biascorr_bc_hdi_r = "24.01"//y
-#let biascorr_bc_dhdi_l = "-0.16"//y
-#let biascorr_bc_dhdi_r = "+0.20"//y
-
-// Marginalised posterior and split-Gaussian smearing widths
-#let marg_mode = "16.60"
-#let marg_hdi_l = "8.04"
-#let marg_hdi_r = "25.70"
-#let marg_p90 = "29.81"
-#let marg_sigma_p = "4.89"
-#let marg_sigma_m = "3.98"
 
 // ── syst_table helper ─────────────────────────────────────────────────────
 // Two-row (non-corrected / bias-corr) table.
@@ -180,6 +92,64 @@ We assess the impact of BM statistical fluctuations by repeating the M2 fit with
   )
 ]
 
+== BM Systematic variations <sec:bm_syst>
+
+#figure(
+  placement: auto,
+  grid(
+    columns: 2,
+    column-gutter: 0.5em,
+    image("../images/06-bmsyst_thresh_post_bc.png", width: 100%),
+    image("../images/06-bmssyt_binning_post_bc.png", width: 100%),
+  ),
+  caption: [
+    BM systematic posteriors vs. nominal (bias-corrected).\
+    Left: threshold set to 250 keV. Right: Comparing binning variation.\
+  ],
+) <fig-bmsyst>
+
+The background model introduces systematic uncertainties through the choice of analysis threshold and energy binning. Efficiency-related selection cuts and the incorporation of #sr90 are excluded from this study: data-selection efficiencies are ignored here, and the #sr90 spectral component does not influence the ROI, nor does its inclusion meaningfully alter the BM spectral shape within it.#footnote[Actually check and validate this claim]
+
+For each variation the BM input spectra are regenerated using the BM fit-mode parameters of the corresponding systematic model. The M2 fit is then repeated with the same procedure as the nominal analysis and bias-corrected using the nominal correction parameters.
+
+*Threshold.* The nominal analysis threshold is 200 keV. Using 250 keV instead extends the fit range toward higher energies, modifying the spectral shape entering the M2 fit. The resulting posterior shift relative to the nominal is shown in @fig-bmsyst (left) and the table below.
+
+*Binning.* Multiple energy-binning choices were surveyed; the variation that produces the maximum HDI expansion — in each direction — is adopted as the conservative systematic estimate. The M2 fit uses the same binning as its BM input spectrum in each test. The extremal posterior is shown in @fig-bmsyst (right).
+
+#align(center)[
+  #btable(
+    columns: (auto, auto, 1fr, 1fr, 2fr, 1.5fr),
+    inset: 6pt,
+    align: (left, left, center, center, center, center),
+    table.header(
+      [*Systematic*], [*Fit*], [*Mode*], [*$Delta$ Mode*], [*68% HDI*], [*$Delta$ HDI*],
+    ),
+    table.cell(rowspan: 2)[Threshold 250 keV],
+      [non-corrected],
+      [#bmsyst_th_raw_mode],
+      [#fmt_signed(bmsyst_th_raw_dmode, "")],
+      [#bmsyst_th_raw_hdi_l, #bmsyst_th_raw_hdi_r],
+      [#fmt_signed(bmsyst_th_raw_dhdi_l, "l"), #fmt_signed(bmsyst_th_raw_dhdi_r, "r")],
+    [bias-corr],
+      [#bmsyst_th_bc_mode],
+      [#fmt_signed(bmsyst_th_bc_dmode, "")],
+      [#bmsyst_th_bc_hdi_l, #bmsyst_th_bc_hdi_r],
+      [#fmt_signed(bmsyst_th_bc_dhdi_l, "l"), #fmt_signed(bmsyst_th_bc_dhdi_r, "r")],
+
+    table.cell(rowspan: 2)[Binning (max)],
+      [non-corrected],
+      [#bmsyst_bin_raw_mode],
+      [#fmt_signed(bmsyst_bin_raw_dmode, "")],
+      [#bmsyst_bin_raw_hdi_l, #bmsyst_bin_raw_hdi_r],
+      [#fmt_signed(bmsyst_bin_raw_dhdi_l, "l"), #fmt_signed(bmsyst_bin_raw_dhdi_r, "r")],
+    [bias-corr],
+      [#bmsyst_bin_bc_mode],
+      [#fmt_signed(bmsyst_bin_bc_dmode, "")],
+      [#bmsyst_bin_bc_hdi_l, #bmsyst_bin_bc_hdi_r],
+      [#fmt_signed(bmsyst_bin_bc_dhdi_l, "l"), #fmt_signed(bmsyst_bin_bc_dhdi_r, "r")],
+  )
+]
+
 == Lineshape Systematics <sec:lineshape_systematics>
 
 The data and BM MC spectra are processed with lineshape scaling (LSS) corrections, which adjust the energy scale ($Delta Q$) and resolution ($sigma(E)$) per dataset. Miscalibration near the ROI can bias signal extraction and we evaluate this systematic by generating spectra with the LSS parameters perturbed by their $plus.minus 1 sigma$ uncertainties and refitting.
@@ -236,48 +206,17 @@ $ n_+ = sqrt(sum_("ds", plus.minus) (Delta^+_i)^2), quad n_- = sqrt(sum_("ds", p
       header: ([*Parameter*], [*$Delta$ HDI left*], [*$Delta$ HDI right*]),
       (
         [$Delta Q thin (plus.minus 1 sigma)$],
-        [-3.6],
-        [+4.7],
+        [#lss_dq_bc_dhdi_l],
+        [#lss_dq_bc_dhdi_r],
         [$sigma$-scaling ($+1 sigma$)],
-        [-1.2],
-        [+1.7],
+        [#lss_sscl_bc_dhdi_l],
+        [#lss_sscl_bc_dhdi_r],
       ),
       columns: (auto, 1fr, 1fr),
       label: <tbl-hyperparams>,
     )
   ])
 ]
-// #align(center)[
-//   #btable(
-//     columns: (auto, auto, 1fr, 1fr, 2fr, 1.5fr),
-//     inset: 6pt,
-//     align: (left, left, center, center, center, center),
-//     table.header([*Systematic*], [*Fit*], [*Mode*], [*$Delta$ Mode*], [*68% HDI*], [*$Delta$ HDI*]),
-//     table.cell(rowspan: 2)[$Delta Q$ ($plus.minus 1 sigma$)],
-//     [non-corrected],
-//     [#lss_dq_raw_mode],
-//     [+0.??],
-//     [#lss_dq_raw_hdi_l, #lss_dq_raw_hdi_r],
-//     [#lss_dq_raw_dhdi_l, #lss_dq_raw_dhdi_r],
-//     [bias-corr],
-//     [#lss_dq_bc_mode],
-//     [+0.??],
-//     [#lss_dq_bc_hdi_l, #lss_dq_bc_hdi_r],
-//     [#lss_dq_bc_dhdi_l, #lss_dq_bc_dhdi_r],
-
-//     table.cell(rowspan: 2)[$sigma$-scaling ($+1 sigma$)],
-//     [non-corrected],
-//     [#lss_sscl_raw_mode],
-//     [+0.??],
-//     [#lss_sscl_raw_hdi_l, #lss_sscl_raw_hdi_r],
-//     [#lss_sscl_raw_dhdi_l, #lss_sscl_raw_dhdi_r],
-//     [bias-corr],
-//     [#lss_sscl_bc_mode],
-//     [+0.??],
-//     [#lss_sscl_bc_hdi_l, #lss_sscl_bc_hdi_r],
-//     [#lss_sscl_bc_dhdi_l, #lss_sscl_bc_dhdi_r],
-//   )
-// ]
 
 == Bias Correction Systematics <sec:bias_correction_syst>
 
@@ -292,28 +231,28 @@ Bias fits are run seperately for each studied model, and the fit plots for diffe
   placement: auto,
   grid(
     columns: 1,
-    // row-gutter: 1em,
-    // align(center)[
-    //   #syst_table(
-    //     raw_mode: biascorr_raw_mode,
-    //     raw_hdi_l: biascorr_raw_hdi_l,
-    //     raw_hdi_r: biascorr_raw_hdi_r,
-    //     d_mode: "+0.00",
-    //     d_bc_mode: "+0.73",
-    //     bc_mode: biascorr_bc_mode,
-    //     bc_hdi_l: biascorr_bc_hdi_l,
-    //     bc_hdi_r: biascorr_bc_hdi_r,
-    //     d_hdi_l: biascorr_bc_dhdi_l,
-    //     d_hdi_r: biascorr_bc_dhdi_r,
-    //   )
-    // ],
+    row-gutter: 1em,
+    align(center)[
+      #academic-table(
+        "",
+        header: ([*Fit*], [*Mode*], [*68% HDI*], [*$Delta$ HDI*]),
+        (
+          [bias-correction],
+          [#biascorr_bc_mode],
+          [#biascorr_bc_hdi_l, #biascorr_bc_hdi_r],
+          [#biascorr_bc_dhdi_l, #biascorr_bc_dhdi_r]
+        ),
+        columns: (auto, 1fr, 1fr, 1fr),
+        label: <tbl-hyperparams>,
+      )
+    ],
     image("../images/06-bias_corr_comparison.png", width: 70%),
   ),
   caption: [Reference (central bias-correction parameters) vs. \
     systematic (bias-correction parameters sampled from their covariance) bias-corrected posterior.],
 ) <fig-biascorrsyst>
 
-The varied posterior shifts by $+0.73$ events in mode, with 68% HDI edges moving by $#biascorr_bc_dhdi_l$ (lower) and $#biascorr_bc_dhdi_r$ (upper). (@fig-biascorrsyst).
+The varied posterior shifts by #biascorr_bc_dmode events in mode, with 68% HDI edges moving by $#biascorr_bc_dhdi_l$ (lower) and $#biascorr_bc_dhdi_r$ (upper). (@fig-biascorrsyst).
 
 
 == Cobalt shift selection <sec:systematics_co60>
@@ -485,14 +424,20 @@ Uncertainties in PSA efficiency curves can affect the fit. Ares simulations acco
   header: ([*Source*], [*$+sigma$ (right)*], [*$-sigma$ (left)*]),
   (
     [LSS — $Delta Q$ ($plus.minus 1 sigma$)],
-    [$+4.74$],
-    [$-$3.59],
+    [#lss_dq_bc_dhdi_r],
+    [#lss_dq_bc_dhdi_l],
     [LSS — $sigma$-scaling ($+1 sigma$)],
-    [$+1.17$],
-    [$-1.24$],
+    [#lss_sscl_bc_dhdi_l],
+    [#lss_sscl_bc_dhdi_r],
     [BM MC statistical],
     [$+0.00$],
-    [$-1.04$],
+    [#bmmc_bc_dhdi_l],
+    [BM threshold (250 keV)],
+    [$+0.00$],
+    [#bmsyst_th_bc_dhdi_l],
+    [BM binning (max)],
+    [$+0.00$],
+    [#bmsyst_bin_raw_dhdi_l],
     [$0 nu beta beta$ spectrum shift ($1.0$ keV/MeV)],
     [$+0.00$],
     [$-0.42$],
@@ -505,7 +450,7 @@ Uncertainties in PSA efficiency curves can affect the fit. Ares simulations acco
     table.hline(),
     [*TOTAL (quad-sum)*],
     [*$+4.89$*],
-    [*$-3.98$*],
+    [*$-4.35$*],
   ),
   columns: (1fr, 1fr, 1fr),
   align: (left, center, center),

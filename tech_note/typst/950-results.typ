@@ -1,4 +1,5 @@
 #import "common.typ": *
+#import "results.typ": *
 
 #let btable(..args) = block(stroke: (bottom: 1.5pt))[
   #set table(
@@ -129,13 +130,13 @@ We run 200 toy fits with injected signal events and evaluate the bias and scalin
 
 Following the application of the bias correction to the optimal reference ($Delta = 1.0 times 10^(-3)$) model, the finalized absolute $0 nu beta beta$ event count is utilized to compute the decay rate via the expression:
 
-$ Gamma = n_(0 nu) / (f_(130) dot N_A dot (1000 / M_("TeO"_2)) dot "MT" dot epsilon_("MC") dot epsilon_("PSA")) $
+$ Gamma = n_(0 nu) / (f_(130) dot N_A dot (1000 / M_("TeO"_2)) dot "MT" dot epsilon_("MC") ) $
 
-
+Where the exposure $M T$ is the sum of exposures from each dataset, and $epsilon_("MC")$ is the final selection efficiency after all the cuts have been applied, which, for this model selection is #eff_allcuts %
 
 #figure(
   grid(
-    columns: 2,
+    columns: 3,
     column-gutter: 3em,
     align: horizon,
     btable(
@@ -161,11 +162,22 @@ $ Gamma = n_(0 nu) / (f_(130) dot N_A dot (1000 / M_("TeO"_2)) dot "MT" dot epsi
       [$1038.4 "kg" dot "yr"$],
       [$epsilon_("MC")$],
       [$0.03547$],
-      [$epsilon_("PSA")$],
-      [$0.988$],
+    ),
+    btable(
+      columns: 2,
+      align: (left, right),
+      table.header([*Cut*], [*$epsilon$ %*]),
+      [MC selection],
+      [#eff_fullcuts_ROI],
+      [Signal-cut \ (`u1740`)],
+      [#eff_ndbdcuts_only],
+      [Co-cut \(`gamma10_v150`)],
+      [#eff_cocuts_only],
+      [M2 Final],
+      [#eff_allcuts],
     ),
   ),
-  caption: [Left: Corrected $0 nu beta beta$ event count \ Right: Rate conversion parameters for the reference fit.],
+  caption: [Left: Corrected $0 nu beta beta$ event count \ Middle: Rate conversion parameters for the reference fit.\ Right: The efficiencies],
 )
 
 The resulting $0 nu beta beta$ decay rate and half-life limit is:
