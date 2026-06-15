@@ -1,5 +1,12 @@
 == Data Processing
 
+=== Data Collection
+
+- Data is organized into datasets, which are a collection of runs when operating conditions are fairly similar. Each run is $~ 24 "hrs"$,
+- and mostly either a physics run (which is what the analyzed data is based on, due to natural radioactivity) or calibration runs where external radioactive sources are used to calibrate the detector.
+- Each dataset generally lasts for 1–2 months, with a few calibration runs at the beginning and at the end of each dataset.
+- Other optimization runs to measure the load curves and set pulse tube phases are also run in between physics data collection campaigns.
+
 === Triggering
 
 - Triggering is the first data processing step required to identify discrete pulses in the continuous data stream.
@@ -24,8 +31,8 @@
 - Thermal Gain Stabilization (TGS) corrects the extracted amplitudes for long-term baseline temperature drifts.
 - The stabilization parameters are calculated over discrete time steps to account for operational breaks or sharp temperature variations within a single dataset.
 - Two independent TGS algorithms are utilized: Heater TGS and Calibration TGS.
-- **Heater TGS:** Tracks the amplitude variations of periodic pulser events that inject a constant reference energy. The response is modeled as $A_h (t) = a_h(E) dot (p_1 + p_2 dot T + ...)$, where $T$ acts as a proxy for the baseline temperature.
-- **Calibration TGS:** Tracks the position of a prominent reference background peak, typically the 2615 keV line from $208$Tl. This method uses a dataset-dependent offset voltage derived from the working point to account for nonlinearities in the gain-temperature dependence.
+- *Heater TGS:* Tracks the amplitude variations of periodic pulser events that inject a constant reference energy. The response is modeled as $A_h (t) = a_h(E) dot (p_1 + p_2 dot T + ...)$, where $T$ acts as a proxy for the baseline temperature.
+- *Calibration TGS:* Tracks the position of a prominent reference background peak, typically the 2615 keV line from $208$Tl. This method uses a dataset-dependent offset voltage derived from the working point to account for nonlinearities in the gain-temperature dependence.
 
 === Energy Calibration
 
@@ -42,13 +49,13 @@
 - The selection evaluates a Figure of Merit (FOM) based on the peak resolution and position stability. The algorithm calculates the ratio $W = alpha (C_h^2 / sigma_h^2) / (C_c^2 / sigma_c^2)$, comparing the heater ($h$) and calibration ($c$) variables.
 - A Fisher test statistic, $F(W)$, is evaluated. If $W < 1$ and the sample size passes the statistical threshold for $alpha = 0.2$, the Calibration TGS is chosen; otherwise, the Heater TGS is applied by default. (In typical runs, this threshold selects Calibration TGS for roughly 100 channels).
 
-**Energy Thresholds:**
+*Energy Thresholds:*
 - To evaluate trigger efficiencies and define the low-energy analysis thresholds, simulated pulses are injected into continuous noise data.
 - A defined test energy is back-computed into a raw amplitude using the calibration function. The simulated pulse is then superimposed onto randomly sampled noise waveforms.
 - The trigger efficiency is measured as the ratio of successfully triggered OT pulses to the total injected pulses. A trigger is considered successful if it occurs within the full width at half maximum of the injected peak's timing location.
 - The resulting efficiency points are plotted against pulse energy and fitted with an error function (erf). The final detector threshold is defined as the energy at which this function reaches $90\%$ efficiency.
 
-**Recovering Saturated Pulses:**
+*Recovering Saturated Pulses:*
 - High-energy events—such as cosmic muons, neutron captures, or potential tri-nucleon decays—deposit energies exceeding $~15$ MeV. These events saturate the ADC digitizers ($|V_"out"| > 9.2$ V) and truncate the peak amplitude.
 - To reconstruct these energies, a "time above threshold" ($t_"above"$) metric is utilized.
 - By analyzing a high-statistics sample of unsaturated pulses, an empirical relationship is established between the total pulse energy and the duration the waveform remains above a specific reference voltage ($V_"thres"$).
