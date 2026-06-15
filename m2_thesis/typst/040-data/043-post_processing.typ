@@ -46,3 +46,16 @@
 - The energy reconstruction efficiency ($epsilon_"FinRecon"$) measures the fraction of accepted pulses successfully reconstructed within $3sigma$ of the expected nominal pulser energy.
 - Finally, the efficiency of the anti-coincidence cut is independently verified using the 1460 keV decay of naturally occurring $40$K. Accidental coincidences are evaluated by counting multiplicity $M>1$ events surrounding this peak using a sideband Poisson likelihood model:
   $ L_"eff" = product_(i) (e^(-lambda_i) lambda_i^(n_i)) / n_i! $
+
+
+  // *Energy Thresholds:*
+  // - To evaluate trigger efficiencies and define the low-energy analysis thresholds, simulated pulses are injected into continuous noise data.
+  // - A defined test energy is back-computed into a raw amplitude using the calibration function. The simulated pulse is then superimposed onto randomly sampled noise waveforms.
+  // - The trigger efficiency is measured as the ratio of successfully triggered OT pulses to the total injected pulses. A trigger is considered successful if it occurs within the full width at half maximum of the injected peak's timing location.
+  // - The resulting efficiency points are plotted against pulse energy and fitted with an error function (erf). The final detector threshold is defined as the energy at which this function reaches $90\%$ efficiency.
+
+  // *Recovering Saturated Pulses:*
+  // - High-energy events—such as cosmic muons, neutron captures, or potential tri-nucleon decays—deposit energies exceeding $~15$ MeV. These events saturate the ADC digitizers ($|V_"out"| > 9.2$ V) and truncate the peak amplitude.
+  // - To reconstruct these energies, a "time above threshold" ($t_"above"$) metric is utilized.
+  // - By analyzing a high-statistics sample of unsaturated pulses, an empirical relationship is established between the total pulse energy and the duration the waveform remains above a specific reference voltage ($V_"thres"$).
+  // - The saturated pulse width ($t_"sat"$) is measured, and the underlying energy is extrapolated as $E_"sat" = (V_"sat" - "Baseline"_"sat") / (V_"thresh" - "Baseline")$ evaluated at $(t_"above" = t_"sat")$.
