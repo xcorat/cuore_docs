@@ -9,9 +9,9 @@ To optimize computationally heavy procedures within the Bayesian framework, inte
 
 == Experimental Data <sec:experimental_data>
 
-The analysis incorporates 15 datasets (ds3601-ds3615), constituting an exposure of $1038.4 "kg" dot "yr"$ of $"TeO"_2$ from the first four years of CUORE operations (out of $1122.9 "kg" dot "yr"$ exposure) #footnote[Summing exposures from PeakShape files gives 1038.7 while literature refer to 1038.4, check!]. Data production mostly parallels the standard single-site #ndbd analysis framework. The raw data is pre-processed to extract pulse parameters, followed by filtering, thermal gain stabilization, and energy calibration.
+The analysis incorporates 15 datasets (ds3601-ds3615), constituting an exposure of $1038.4 "kg" dot "yr"$ of $"TeO"_2$ from the first four years of CUORE operations (out of $1122.9 "kg" dot "yr"$ exposure) #footnote[Summing exposures from PeakShape files gives 1038.7 but I am using the value in our literature - 1038.4 here!]. Data production mostly parallels the standard single-site #ndbd analysis framework. The raw data is pre-processed to extract pulse parameters, followed by filtering, thermal gain stabilization, and energy calibration.
 
-Consistent with the 1 ton-yr BM and low-energy analyses, a 30 ms temporal coincidence window is applied (as opposed to the 5 ms window used in the M1 analysis which focuses on reducing coincident backgrounds). Events are classified as Multiplicity 2 (M2) if they trigger exactly two crystals with a center-to-center distance of less than 150 mm. Please refer to the Internal Note 137D for a detailed review of the Background Model and the data processing steps #footnote[which technote details the data processing steps for 1ton-yr?].
+Consistent with the 1 ton-yr BM and low-energy analyses, a 30 ms temporal coincidence window is applied (as opposed to the 5 ms window used in the M1 analysis which focuses on reducing coincident backgrounds). Events are classified as Multiplicity 2 (M2) if they trigger exactly two crystals with a center-to-center distance of less than 150 mm. Please refer to the Internal Note 137D for a detailed review of the Background Model and the data processing steps #footnote[Add the technote/doc that details the data processing steps for 1ton-yr].
 
 Standard data quality criteria are enforced, including basic pulse quality validation, pileup rejection, Principal Component Analysis (PCA) profiling and lineshape quality. Both events in an M2 pair must independently pass all selection criteria; otherwise, the entire multiplet is rejected.
 
@@ -35,7 +35,7 @@ Standard data quality criteria are enforced, including basic pulse quality valid
 ])
 ]
 
-After these cuts, the overall selection efficiency is 3.80% (M2 selection 3.85%, PCA 98.8%). All these cuts (including the PCA efficiency) is applied by ares, and already filtered in the simulation files.
+After these cuts, the overall selection efficiency is 3.80% (M2 selection 3.85%, PCA 98.8%). All these cuts (including the PCA efficiency) is applied by ares and the input simulation files already reflect them.
 
 == Simulations <sec:simulations>
 

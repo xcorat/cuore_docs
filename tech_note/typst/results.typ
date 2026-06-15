@@ -42,20 +42,22 @@
 #let bmmc_bc_dhdi_r = text(fill: red)[-1.45]//y0
 
 // Threshold250 (RAW)
-#let bmsyst_th_raw_mode = 10.06
-#let bmsyst_th_raw_hdi_l = 3.24
-#let bmsyst_th_raw_hdi_r = 17.30
-#let bmsyst_th_raw_dmode = -1.64
-#let bmsyst_th_raw_dhdi_l = -1.71
-#let bmsyst_th_raw_dhdi_r = -3.08
+#let bmsyst_th_raw_mode = 11.717
+#let bmsyst_th_raw_hdi_l = 3.775
+#let bmsyst_th_raw_hdi_r = 20.148
+#let bmsyst_th_raw_dmode = +0.014
+#let bmsyst_th_raw_dhdi_l = -1.172
+#let bmsyst_th_raw_dhdi_r = -0.228
 
-// Threshold250 (BC)
-#let bmsyst_th_bc_mode = 13.64
-#let bmsyst_th_bc_hdi_l = 6.91
-#let bmsyst_th_bc_hdi_r = 20.77
-#let bmsyst_th_bc_dmode = -1.62
-#let bmsyst_th_bc_dhdi_l = -1.68
-#let bmsyst_th_bc_dhdi_r = 3.04
+// # Threshold250 (BC)
+#let bmsyst_th_bc_mode = 15.270
+#let bmsyst_th_bc_hdi_l = 7.440
+#let bmsyst_th_bc_hdi_r = 23.590
+#let bmsyst_th_bc_dmode = +0.014
+#let bmsyst_th_bc_dhdi_l = -1.152
+#let bmsyst_th_bc_dhdi_r = -0.220
+
+
 
 // Binning Extrema — Maximum (RAW)
 #let bmsyst_bin_raw_mode = 13.11
@@ -137,7 +139,7 @@
 #let marg_hdi_r = "25.70"
 #let marg_p90 = "29.81"
 #let marg_sigma_p = "4.89"
-#let marg_sigma_m = "3.98"
+#let marg_sigma_m = "4.18"
 
 #let fmt_signed(x, side) = {
   let s = str(x)

@@ -56,7 +56,7 @@
 
 This section evaluates the impact of systematic uncertainties on the extracted #ndbd event count. The evaluation metric, HDI-edge shift method, and marginalization procedure are described in @methods. The following sources are considered:
 
-1. BM fit statistical errors.
+1. BM fit statistical and systematic errors.
 2. Lineshape modeling (LSS).
 3. Signal energy shift.
 4. Bias correction parameters.
@@ -108,11 +108,11 @@ We assess the impact of BM statistical fluctuations by repeating the M2 fit with
   ],
 ) <fig-bmsyst>
 
-The background model introduces systematic uncertainties through the choice of analysis threshold and energy binning. Efficiency-related selection cuts and the incorporation of #sr90 are excluded from this study: data-selection efficiencies are ignored here, and the #sr90 spectral component does not influence the ROI, nor does its inclusion meaningfully alter the BM spectral shape within it.#footnote[Actually check and validate this claim]
+The background model introduces systematic uncertainties through the choice of analysis threshold and energy binning. Efficiency-related selection cuts and the incorporation of #sr90 are excluded from this study: data-selection efficiencies are ignored here, and the #sr90 spectral component does not influence the ROI, nor does its inclusion meaningfully alter the BM spectral shape within it.#footnote[Actually I need to think more about this, or just actually run the fits and test. If the addition of #sr90 changes the other fit components significantly, we might need to include this.]
 
 For each variation the BM input spectra are regenerated using the BM fit-mode parameters of the corresponding systematic model. The M2 fit is then repeated with the same procedure as the nominal analysis and bias-corrected using the nominal correction parameters.
 
-*Threshold.* The nominal analysis threshold is 200 keV. Using 250 keV instead extends the fit range toward higher energies, modifying the spectral shape entering the M2 fit. The resulting posterior shift relative to the nominal is shown in @fig-bmsyst (left) and the table below.
+*Threshold.* The nominal analysis threshold is 200 keV. Using 250 keV instead move the fit range toward higher energies, modifying the spectral shape and lowering the efficiency. Eventhough the efficieny would ideally be applied at the rate calculation stage, to simplify the combination of systematics, the efficiency scaling was applied to the bias-corrected posterior to to match it to the rest of the systematics ($ epsilon_"correction" = n_(0 nu beta beta, 200"keV") "/" n_(0 nu beta beta, 250"keV")$). The resulting posterior shift relative to the nominal is shown in @fig-bmsyst (left) and the table below.
 
 *Binning.* Multiple energy-binning choices were surveyed; the variation that produces the maximum HDI expansion — in each direction — is adopted as the conservative systematic estimate. The M2 fit uses the same binning as its BM input spectrum in each test. The extremal posterior is shown in @fig-bmsyst (right).
 
@@ -163,7 +163,7 @@ with per-dataset energy scale and resolution corrections:
 
 $ Delta Q = mu' - mu = p_0 + p_1 E + p_2 E^2, quad sigma(E) = q_0 + q_1 E $
 
-The asymmetry parameters ($A_L$, $A_R$, $a_L$, $a_R$) are fixed from the peakshape fit to the $""^(208)"Tl"$ 2615 keV peak; the scaling parameters ($arrow(p)$, $arrow(q)$) are derived from fits to other calibration peaks#footnote[TODO: add reference to the 1-tonne analysis for LSS parameter derivation]. Applying full-MC variations on $arrow(p)$, $arrow(q)$ require recreating spectra for each sampled LSS point per input source #footnote[recreating spectral histograms is the most time consuming part of the fit, and done only once per fit in current setup]. Instead, the systematic is evaluated by applying only the $plus.minus 1 sigma$ ($+1 sigma$) shifts to LSS parameters $arrow(p)$ ($arrow(q)$), and re-calculating the staged event energies by applying a corrective $Delta Q$ ($sigma$ scaling) #footnote[When creating staging files, a 10 keV padding is added to account for these LSS variations] before creating the input spectra.
+The asymmetry parameters ($A_L$, $A_R$, $a_L$, $a_R$) are fixed from the peakshape fit to the $""^(208)"Tl"$ 2615 keV peak; the scaling parameters ($arrow(p)$, $arrow(q)$) are derived from fits to other calibration peaks (Refer to CUORE internel note 134D). Applying full-MC variations on $arrow(p)$, $arrow(q)$ require recreating spectra for each sampled LSS point per input source #footnote[recreating spectral histograms is the most time consuming part of the fit, and done only once per fit in current setup]. Instead, the systematic is evaluated by applying only the $plus.minus 1 sigma$ ($+1 sigma$) shifts to LSS parameters $arrow(p)$ ($arrow(q)$), and re-calculating the staged event energies by applying a corrective $Delta Q$ ($sigma$ scaling) #footnote[When creating staging files, a 10 keV padding is added to account for these LSS variations] before creating the input spectra.
 
 === Systematic estimation <sec:lss_estimation>
 
@@ -220,7 +220,7 @@ $ n_+ = sqrt(sum_("ds", plus.minus) (Delta^+_i)^2), quad n_- = sqrt(sum_("ds", p
 
 == Bias Correction Systematics <sec:bias_correction_syst>
 
-Low-statistics posteriors carry a reconstruction bias that is corrected before quoting results #footnote[TODO: add cross-reference to bias correction derivation]. The correction parameters carry statistical uncertainties from bias fits; we propagate these by sampling them from their covariance matrix and reapplying the correction.
+Low-statistics posteriors carry a reconstruction bias that is corrected before quoting results (Refer to @sec:methods_bias_correction). The correction parameters carry statistical uncertainties from bias fits; we propagate these by sampling them from their covariance matrix and reapplying the correction.
 Bias fits are run seperately for each studied model, and the fit plots for different #Co60 shift models is reproduced in @fig-bias-plots-all
 #figure(
   image("../images/05-bias_focus_gamma10_v150_u1740.png", width: 90%),
@@ -440,17 +440,17 @@ Uncertainties in PSA efficiency curves can affect the fit. Ares simulations acco
     [#bmsyst_bin_raw_dhdi_l],
     [$0 nu beta beta$ spectrum shift ($1.0$ keV/MeV)],
     [$+0.00$],
-    [$-0.42$],
+    [-#ndbdshift_bc_dhdi_l],
     [Cobalt shift selection],
     [$+0.00$],
-    [$-0.35$],
+    [-#cobalt_bc_dhdi_l],
     [Bias correction],
-    [$+0.20$],
-    [$-0.16$],
+    [+#biascorr_bc_dhdi_r],
+    [-#biascorr_bc_dhdi_l],
     table.hline(),
     [*TOTAL (quad-sum)*],
-    [*$+4.89$*],
-    [*$-4.35$*],
+    [*+#marg_sigma_p*],
+    [*-#marg_sigma_m*],
   ),
   columns: (1fr, 1fr, 1fr),
   align: (left, center, center),

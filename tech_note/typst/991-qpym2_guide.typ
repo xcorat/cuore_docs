@@ -2,7 +2,7 @@
 
 === Introduction
 
-==== Project structure:
+The fit pipeline is implemented mostly in Python. The project is structured as:
 
 - *Code*: `./qpym2/` package contains all code for staging, input creation, fitting, and systematics.
 
@@ -41,7 +41,7 @@
     - Ensure background model and $0 nu beta beta$ MC inputs are consistent; adjust cuts in config as needed.
 
 2. *Create Fit Inputs*
-    - Configure fit input parameters.    
+    - Configure fit input parameters.
     - *Note:* The ROI differs from the staging selection to include necessary padding.
     - Run `run_create_input.py`. Run in batches (e.g., ~50 models) to manage memory.
 

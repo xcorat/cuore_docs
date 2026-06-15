@@ -9,7 +9,7 @@ The M2 Region of Interest (ROI) contains only a limited number of spectral featu
 
 The background model is simplified into four source-specific composite spectra: #Co60, #U238, #Th232, and all remaining ('other') contaminants. The prominence of the 1173 keV and 1334 keV gammas, the $beta$s from multiple sources, alongside specific #U238 and #Th232 chain peaks, dictates this grouping.
 
-To construct these composites, simulated events passing the selection criteria (@sec:experimental_data) are binned into $1 "keV" times 1 "keV"$ bins #footnote["binned into bins"? or use parantheses? (1kev x 1kev)?] and normalized by their respective Background Model (BM) posterior modes#footnote[See @sec:bm_mode for mode algorithm]. The individual scaled histograms are then added together within their respective categories. @tbl-merged-comps details the leading contributors to each merged component. Both the expected integral counts and normalized shape templates are archived for the fit.
+These input spectra are constructed by generating sum histograms with 1 keV binning ($1 times 1 " keV"^2$ in $E_"sum"-E_"diff"$ plane). The simulated events passing the selection criteria (@sec:experimental_data) are then normalized by their respective Background Model (BM) posterior modes#footnote[See @sec:bm_mode for mode algorithm], and the individual scaled histograms are added together within their respective categories. @tbl-merged-comps details the leading contributors to each merged component. Both the expected integral counts and normalized shape templates are archived for the fit.
 
 #align(center)[
 #box(width: 90%, [
@@ -21,19 +21,19 @@ To construct these composites, simulated events passing the selection criteria (
     [  CuNOSV], [], [1865], [],
     [  TeO2], [], [20], [],
     [  S600mK], [], [19], [],
-    
+
     // U238 component
     [*#U238*], [28], [342], [11.2%],
     [  CuNOSV Surf], [], [105], [],
     [  TopPb], [], [89], [],
     [  S10mK Surf], [], [53], [],
-    
+
     // Th232 component
     [*#Th232*], [18], [641], [21.0%],
     [  RomanPb], [], [231], [],
     [  S600mK], [], [205], [],
     [  CuNOSV Surf], [], [114], [],
-    
+
     // Other component
     [*Other*], [34], [127], [4.1%],
     [  Muons], [], [88], [],
@@ -41,18 +41,18 @@ To construct these composites, simulated events passing the selection criteria (
   ),
   columns: (1.5fr, auto, auto, auto),
   label: <tbl-merged-comps>,
-) 
+)
 ])
 ]
 
 #figure(
   image("../images/03-ucomps_stacked_0v.png", width: 100%),
   caption: "Background and signal components projected on the u-axis."
-) 
+)
 #figure(
   image("../images/03-vcomps_stacked_0v.png", width: 100%),
   caption: "Background and signal components projected on the v-axis."
-) 
+)
 
 == Rotation and Smoothing <sec:rotation_smoothing>
 
@@ -109,7 +109,7 @@ Approximately 10% of dual-site #ndbd events do not deposit their full energy wit
 
 Minor lineshape deviations in a volume sparse of other features heavily distort fit convergences. Specifically systematic difference exists between the #Co60 sum peak (1173 keV and 1334 keV coincidences) reconstructed in data compared to simulations, the observed #Co60 sum events reconstruct at marginally higher energies than theoretical predictions, an effect that becomes more pronounced as the energy asymmetry between two depositions increases (see @co-shift-check).
 
-To correct for this, events within 20 keV of the individual $gamma$ lines ($|E_(1|2) - E_gamma| < 10$) and events presenting nearly symmetric energy distriibution ($Delta E = |E_1 - E_2| < 212 "keV"$, or $v < 150$) are rejected. For remaining events, we model an energy-dependent shift applied to the primary energy deposit, $E_1$#footnote[Add analysis efficiencies as a table].
+To correct for this, events within 20 keV of the individual $gamma$ lines ($|E_(1|2) - E_gamma| < 10$) and events presenting nearly symmetric energy distriibution ($Delta E = |E_1 - E_2| < 212 "keV"$, or $v < 150$) are rejected. For remaining events, we model an energy-dependent shift applied to the primary energy deposit, $E_1$.
 
 $ E_1 ' = E_1(1 + Delta), quad Delta in {0, 3, 5, 8, 10, 12, 15} times 10^(-3) $
 
@@ -119,7 +119,7 @@ The analysis manually marginalizes over this variable shift to extract the unaff
   grid(
     rows: 2,
     column-gutter: 1em,
-    align: left,  
+    align: left,
     image("../images/co_shift_check_g10v150_vlo.png", width: 100%),
     image("../images/co_shift_check_g10v150_vmid.png", width: 100%)
   ),

@@ -12,7 +12,7 @@ Combining the bias-corrected reference fit with the systematic marginalization d
   fill: gray.lighten(90%),
   width: 100%,
 )[
-  $ Gamma^(#ndbd) = 3.21 ""_(-1.54)^(+1.88) "stat" ""_(-0.85)^(+1.04) "syst" times 10^(-25) thin thin "yr"^(-1) $
+  $ Gamma^(#ndbd) = 3.21 ""_(-1.40)^(+1.80) "stat" ""_(-0.85)^(+1.04) "syst" times 10^(-25) thin thin "yr"^(-1) $
 ]
 
 And we set a 90% confidence level Bayesian lower bounds for the #ndbd half life in the M2 analysis as:
@@ -31,10 +31,10 @@ The median exclusion sensitivity (90% C.I) obtained by running 200 toy fits with
 
 #figure(
   grid(
-    columns: (1fr, 1fr),
+    columns: (1.05fr, 1fr),
     // column-gutter: 1.5em,
     align: bottom,
-    image("../images/06_syst_rate_new_final_rate_posterior.png"), image("../images/07_excl_sens.png"),
+    image("../images/06-rate_cs10_marg.png"), image("../images/07_excl_sens.png"),
   ),
   caption: [Left: Systematic-marginalized #ndbd rate posterior. \ Right: M2 sensitivity fits, #ndbd modes.],
 ) <tbl-final-results>
@@ -49,17 +49,17 @@ The median exclusion sensitivity (90% C.I) obtained by running 200 toy fits with
       [$Gamma$ (mode)],
       [$3.54 times 10^(-25) thin "yr"^(-1)$],
       [$Gamma plus.minus$ stat],
-      [$""^(+1.88)_(-1.54) times 10^(-25) thin "yr"^(-1)$],
+      [$""^(+1.80)_(-1.40) times 10^(-25) thin "yr"^(-1)$],
       [$Gamma plus.minus$ syst],
-      [$""^(+1.04)_(-0.85) times 10^(-25) thin "yr"^(-1)$],
+      [$""^(+1.28)_(-0.63) times 10^(-25) thin "yr"^(-1)$],
       [$Gamma$ (90% C.L.)],
       [$< 6.36 times 10^(-25) thin "yr"^(-1)$],
       [$T^(0 nu)_(1\/2)$ (mode)],
-      [$2.15 times 10^(24) thin "yr"$],
+      [$1.97 times 10^(24) thin "yr"$],
       [$T^(0 nu)_(1\/2) plus.minus$ stat],
-      [$""^(+1.51)_(-0.68) times 10^(24) thin "yr"$],
+      [$""^(+1.67)_(-0.78) times 10^(24) thin "yr"$],
       [$T^(0 nu)_(1\/2) plus.minus$ syst],
-      [$""^(+0.62)_(-0.45) times 10^(24) thin "yr"$],
+      [$""^(+1.06)_(-0.41) times 10^(24) thin "yr"$],
       [$T^(0 nu)_(1\/2)$ (90% C.L.)],
       [$> 1.09 times 10^(24) thin "yr"$],
     ),

@@ -19,7 +19,7 @@ Here, $p(cal(D)|arrow(theta))$ is similar to #footnote[Is the wording really cor
 
 == Probability Model <sec:probability_model>
 
-In our fit construction, the priors $p(arrow(theta))$ reflect the expected event counts from the BM fit and its systematic variations #footnote[See Appendix for details on the BM fit and systematic variations: TODO]. The likelihood $p(cal(D)|arrow(theta))$ #footnote[ref above] evaluates the unbinned events within the ROI against the binned positional probabilities defined by the merged component configurations:
+In our fit construction, the priors $p(arrow(theta))$ reflect the expected event counts from the BM fit and its systematic variations #footnote[See Appendix for details on the BM fit and systematic variations: TODO]. The likelihood $p(cal(D)|arrow(theta))$ evaluates the unbinned events within the ROI against the binned positional probabilities defined by the merged component configurations:
 
 $
   p(cal(D)|arrow(theta)) = ( lambda^n e^(-lambda) ) / ( n! ) product_(i=1)^n f_i (arrow(E)_i|arrow(theta))
@@ -33,7 +33,7 @@ where $lambda = sum_(k=0)^(m) lambda_k$ represents the total expected event coun
 Background component priors are defined as truncated normal distributions bounded below at zero#footnote[Implemented as `TruncatedNormal`; assess if additional details are required], while the signal prior acts as a strictly positive uniform distribution also bounded above at the total number of observed events. The mean ($mu$) and width ($sigma$) of each background prior are determined by parametrically propagating uncertainties from the BM fits. The generative procedure operates as follows:
 
 1. Select a random vector from the BM posterior.
-2. Sample from the maximal-correlation matrix#footnote[Check Appendix xxx for discussion of what this correlation matrix is] to integrate systematic variations.
+2. Sample from the maximal-correlation matrix#footnote[Check Appendix for discussion of what this correlation matrix is: TODO] to integrate systematic variations.
 3. Aggregate the relevant sub-components to predict the expected M2 event rate per sum category.
 4. Iterate 100 times to construct an ensemble distribution, record $mu$ and $sigma$,
 5. Assign $mu_k = mu$ and $sigma_k = 2 sigma$ for truncated Gaussian priors per component $k$ #footnote[We use weaker priors to reduce the dependence of our fit results on priors $arrow sigma_k = 2 times sigma$].
@@ -65,7 +65,7 @@ The analysis tests three main categorical variations to the fit configuration:
 + #Co60 Peak Shift $Delta$: Scale the $E_1$ energy in Cobalt component, $E_1^' = (1+Delta)E_1$
   - $Delta in {0.0, 0.3, 0.5, 0.8, 1.0, 1.2, 1.5}$
 
-The fits from each point in the grid of above paraters were tested for fit validity and sensitivity (see @sec:loglike_validation). During blinded analysis, we decided to keep the more loose cut on #ndbd region (`u1740`) and strongest cut on the #Co60 peaks (`gamma10_v150`). However, looking at unblinded fits, either of these measures can be used to rank models authoritatively, and we resort to a more heuristic selection procedure as discussed below.
+The fits from each point in the grid of above paraters were tested for fit validity and sensitivity. During blinded analysis, we decided to keep the more loose cut on #ndbd region (`u1740`) and strongest cut on the #Co60 peaks (`gamma10_v150`). However, looking at unblinded fits, either of these measures can be used to rank models authoritatively, and we resort to a more heuristic selection procedure as discussed below.
 
 #figure(
   image("../images/04-sens_comparison.png", width: 100%),
@@ -144,4 +144,4 @@ Once the left and right systematic widths $sigma^(plus.minus)_k$ from all source
 
 $ sigma^+_"tot" = sqrt(sum_k (sigma^+_k)^2), quad sigma^-_"tot" = sqrt(sum_k (sigma^-_k)^2) $
 
-The reference posterior is then convolved with a split-Gaussian kernel of widths $sigma^(plus.minus)_"tot"$, producing the final systematic-marginalized posterior. The mode, 68% HDI, and 90% upper limit quoted in the results all derive from this final posterior. The numerical values of all individual contributions and posterior comparison plots are discussed in @systematics. #footnote[Discuss how clipping < 0 is handled?]
+The reference posterior is then convolved with a split-Gaussian kernel of widths $sigma^(plus.minus)_"tot"$, producing the final systematic-marginalized posterior. The mode, 68% HDI, and 90% upper limit quoted in the results all derive from this final posterior. The numerical values of all individual contributions and posterior comparison plots are discussed in @systematics. #footnote[Do we need to iscuss how clipping < 0 is handled?]

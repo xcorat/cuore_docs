@@ -5,7 +5,7 @@
 
 #show: doc => paper(
   title: [CUORE Dual-site #ndbd Analysis],
-  subtitle: [Internel Note 157],
+  subtitle: [Internel Note 157D],
   authors: ((name: [Sachi Wagaarachchi]),),
   date: [#datetime.today().display("[month repr:long] [day], [year]")],
   abstract: [
@@ -22,18 +22,16 @@
 
 #outline(title: [Table of Contents], indent: auto)
 
-#pagebreak()
-#outline(title: [List of Figures], target: figure.where(kind: image))
+// #pagebreak()
+// #outline(title: [List of Figures], target: figure.where(kind: image))
 
-#pagebreak()
-#outline(title: [List of Tables], target: figure.where(kind: table))
+// #pagebreak()
+// #outline(title: [List of Tables], target: figure.where(kind: table))
 
 #show: apply-styles
 
 #pagebreak()
 
-#include "typst/901-prelim-notes.typ"
-#pagebreak()
 #include "typst/910-introduction.typ"
 #pagebreak()
 #include "typst/920-data.typ"

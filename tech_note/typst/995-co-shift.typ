@@ -1,18 +1,23 @@
+#import "common.typ": *
+
+== #Co60 Peak shift discussion
+
+This section need to be expanded using other literature we have about the peak reconstruction.
+- Discuss surface events vs bulk.
+- Describe the plots specific for M2 if needed
+- Discuss other fits that were done to test if possible (Ex. remove 511 keV)
+
+*Extra plots showing the peak shift in Co*
 
 #figure(
   grid(
     rows: 3,
     column-gutter: 1em,
-    align: left,
-  image("../images/co_shift_check_full.png", width: 100%),
-  image("../images/co_shift_check_g10v150.png", width: 100%),
-  image("../images/co_shift_check_g10v150_inv.png", width: 100%),
+    align: auto,
+  image("../images/co_shift_check_full.png", width: 80%),
+  image("../images/co_shift_check_g10v150.png", width: 80%),
+  image("../images/co_shift_check_g10v150_inv.png", width: 80%),
   ),
 
   caption: "Co60 peak modeling"
 )
-
-=== Co dual peak shift: Discuss
-- surface events? How much do we need to talk about the reasons for the shift?
-- Select the plots above and also add comparison plots of ~2 shifts, none and 1.0?
-- fit input generation appendix?

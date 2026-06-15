@@ -82,9 +82,9 @@ The maximum likelihood fit extracts #fit_ndbd.mode events for the $0 nu beta bet
   caption: [Spectral reconstruction of the fit projected onto the $E_"sum"$ (left) and $E_"diff"$ (right) axes, with pull residuals.],
 ) <fig-esum-ediff>
 
-All $hat(R)$ convergence diagnostics #footnote[Describe what these are here or in an appendix] are less than 1.001, indicating good Markov chain mixing. @fig-trace shows the MCMC traces for each component parameter across the chains, confirming stability.
+All $hat(R)$ convergence diagnostics  are less than 1.001, indicating good Markov chain mixing. @fig-trace shows the MCMC traces for each component parameter across the chains, confirming stability#footnote[Do we need to describe what these are? here or in an appendix?].
 
-@fig-correlations shows the pairwise posterior correlations between the fit components. Some correlation is present between the $""^(232)$Th and "others" components, as expected from the similarity of their spectral shapes. Crucially, no significant correlation is observed between the $0 nu beta beta$ signal and the cobalt components, validating that the #Co60 shift correction does not bias the signal rate#footnote[Discuss additional component correlations involving the continuum or muons here].
+@fig-correlations shows the pairwise posterior correlations between the fit components. Some correlation is present between the $""^(232)$Th and "others" components, as expected from the similarity of their spectral shapes. Crucially, no significant correlation is observed between the $0 nu beta beta$ signal and the cobalt components, validating that the #Co60 shift correction does not bias the signal rate.
 
 #figure(
   grid(
@@ -120,7 +120,7 @@ This polynomial fit gives a continuous global best-fit estimate of $Delta = 1.03
 
 == Bias Correction <results.bias_correction>
 
-We run 200 toy fits with injected signal events and evaluate the bias and scaling of our fitted #ndbd posterior as detailed in @sec:methods_bias_correction. Across all tested models with varying cobalt shifts, the bias and scaling strictly conforms to unity within a $1-2 sigma$ statistical variation for all models. The bias formulation determined for the reference model configuration within the injected scope of $n_"inj" in [20, 200]$ establishes the intercept at $b = -(3.76 plus.minus 2.02)$ and the gradient at $a = (1.014 plus.minus 0.018)$. The bias correctd posterior (i.e applying this correction $n_"corrected" = ( n_("sampled") - b ) / a$), yields $15.9$ events.
+We run 200 toy fits with injected signal events and evaluate the bias and scaling of our fitted #ndbd posterior as detailed in @sec:methods_bias_correction. Across all tested models with varying cobalt shifts, the bias and scaling strictly conforms to unity within a $1-2 sigma$ statistical variation for all models. The bias formulation determined for the reference model configuration within the injected scope of $n_"inj" in [20, 200]$ establishes the intercept at $b = -(3.76 plus.minus 2.02)$ and the gradient at $a = (1.014 plus.minus 0.018)$. The bias correctd posterior (i.e applying this correction $n_"corrected" = ( n_("sampled") - b ) / a$), yields $15.26$ events.
 
 #figure(
   image("../images/05-bias_correction_raw_vs_corrected.png", width: 90%),
@@ -137,7 +137,7 @@ Where the exposure $M T$ is the sum of exposures from each dataset, and $epsilon
 #figure(
   grid(
     columns: 3,
-    column-gutter: 3em,
+    column-gutter: 1em,
     align: horizon,
     btable(
       columns: 2,
