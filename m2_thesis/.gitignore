@@ -1,3 +1,5 @@
 # Simple .gitignore for the project
 # Ignore generated PDF files
 *.pdf
+
+.bak/

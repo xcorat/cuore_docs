@@ -8,4 +8,4 @@ The evaluation of this data occurs in two distinct phases: an online diagnostic 
 
 #include "040-data/042-basic_processing.typ"
 
-// #include "040-data/043-post_processing.typ"
+#include "040-data/043-post_processing.typ"

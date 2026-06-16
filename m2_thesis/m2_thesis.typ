@@ -23,12 +23,6 @@
 
 #outline(title: [Table of Contents], indent: auto,  depth: 3)
 
-#pagebreak()
-#outline(title: [List of Figures], target: figure.where(kind: image))
-
-#pagebreak()
-#outline(title: [List of Tables], target: figure.where(kind: table))
-
 #show: apply-styles
 
 #pagebreak()
@@ -48,3 +42,10 @@
 #include "typst/070-m2-results.typ"
 #pagebreak()
 #include "typst/080-conclusion.typ"
+
+
+#pagebreak()
+#outline(title: [List of Figures], target: figure.where(kind: image))
+
+#pagebreak()
+#outline(title: [List of Tables], target: figure.where(kind: table))
