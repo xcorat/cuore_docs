@@ -17,11 +17,12 @@
 #let apply-styles(doc) = {
   set text(lang: "en")
   set text(font: "New Computer Modern")
+  set par(leading: 1.25em)
 
   // Custom heading styles (no all-caps, larger sizes, better spacing)
   show heading.where(level: 1): it => block(
-    above: 2em,
-    below: 1em,
+    // above: em,
+    below: 2.5em,
     text(size: 18pt, weight: "bold")[
       #if it.numbering != none {
         counter(heading).display(it.numbering)
@@ -33,8 +34,8 @@
   )
 
   show heading.where(level: 2): it => block(
-    above: 1.5em,
-    below: 1em,
+    above: 2.5em,
+    below: 2em,
     text(size: 16pt, weight: "bold")[
       #if it.numbering != none {
         counter(heading).display(it.numbering)
@@ -46,16 +47,16 @@
   )
 
   show heading.where(level:3): it => block(
-    above: 1.25em,
-    below: 0.75em,
+    above: 2.25em,
+    below: 1.75em,
     text(size: 14pt, weight: "bold")[
       #it.body
     ]
   )
 
   show heading.where(level:4): it => block(
-    above: 1.25em,
-    below: 0.75em,
+    above: 2em,
+    below: 1.5em,
     text(size: 12pt, weight: "semibold", style: "oblique")[
       #it.body
     ]

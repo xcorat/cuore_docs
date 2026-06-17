@@ -6,7 +6,17 @@ Once stable operating conditions are established, the CUORE detector functions a
 
 Conversely, the final physics analysis relies on a much more sophisticated offline processing pipeline. The offline analysis processes data in discrete temporal units called *datasets*—each consisting of a central physics run bracketed by initial and final calibration runs—to leverage similar thermodynamic conditions and maximize statistics. During this offline phase, the raw continuous data is re-evaluated using advanced algorithms. These comprehensive steps include the implementation of an optimal filter-based trigger to lower energy thresholds, precise thermal gain stabilization to correct for minute temperature drifts over the dataset's duration, rigorous energy estimation based on optimally filtered pulse amplitudes, and concident event analysis to detect multi-site events.
 
+
 === Triggering
+
+
+==== Analysis Event
+
+- CUORE event is a 10s waveform with a trigger, 3s before the trigger and 7s after, sampled at 1000Hz.
+- As mentioned earlier, the DAQ triggers two kinds of events, signal and noise, and the heater events are also recorded by the DAQ as they are triggered by the heaters.
+  - Noise are randomly triggered samples,
+  - Heater events are recorded by the DAQ as it is signalled from the heaters,
+  - Signal are the expected thermal events that are not heaters.
 
 Triggering is the fundamental first step in data processing, responsible for identifying discrete energy depositions within the continuous data stream. Upon detection, events are classified as signal, noise, or reference pulser events, with each triggered event being saved as an independent 10-second waveform window. The extremely low background environment of CUORE is reflected in the trigger rates: during standard physics runs, the background event rate is roughly 1 mHz per channel. During calibration campaigns, this rate increases significantly to 30–40 mHz (typically ranging from 10–20 mHz for inner tower bolometers to 40–50 mHz for those on the outer edges facing the calibration strings).
 
