@@ -17,7 +17,7 @@
 #let apply-styles(doc) = {
   set text(lang: "en")
   set text(font: "New Computer Modern")
-  set par(leading: 1.25em)
+  set par(leading: 0.5em)
 
   // Custom heading styles (no all-caps, larger sizes, better spacing)
   show heading.where(level: 1): it => block(

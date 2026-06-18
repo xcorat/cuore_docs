@@ -14,7 +14,7 @@
   ],
   style: (
     body_font: "New Computer Modern",
-    font_size: 11pt,
+    font_size: 12pt,
     page_margin: (x: 2.5cm, y: 2.5cm),
     heading_numbering: "1.1",
   ),
