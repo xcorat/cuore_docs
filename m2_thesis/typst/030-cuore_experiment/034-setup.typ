@@ -51,6 +51,9 @@ The multistage cooling process manages an immense thermal mass: $~7.4$ tonnes at
 
 Next, five Cryomech PT coolers drive the temperature down to 4 K. To prevent the PT motors from introducing vibrations, mechanical decouplers are employed, and their flexible lines are suspended to avoid contacting the MSP. Finally, a custom Leiden Cryogenics #super[3]He/#super[4]He Dilution Unit takes over, driving the inner mass from 4 K down to the operational base temperature of roughly 10 mK.
 
+// ==== Mechanical Vibrations
+// To further mitigate environmental noise, the detector array is suspended from the Tower Support Plate (TSP), which hangs from an external Y-beam [13]. This structure is mechanically decoupled from the primary cryostat support by a Minus-K negative-stiffness isolation system [3]. Acting as a tunable mechanical low-pass filter with a cutoff frequency of approximately 0.5 Hz, the Minus-K system provides approximately 30 dB of attenuation against seismic and structural vibrations specifically along the vertical axis [3]. A comprehensive detailing of the physical dampening structures and the mechanical isolation campaign is provided in Chapter 3.
+
 === Calibration System<sec3.4-calib>
 Accurate energy calibration is essential for converting measured thermal pulse amplitudes into physical deposited energies. This requires periodically illuminating the detectors with known radioactive sources to map the detector response and correct for thermal non-linearities.
 
