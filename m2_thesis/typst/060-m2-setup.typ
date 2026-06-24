@@ -1,1 +1,1 @@
-= Dual-site Analysis Setup <chap:6>
+= Dual-site Analysis Setup <chap6>

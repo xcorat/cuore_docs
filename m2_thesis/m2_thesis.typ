@@ -42,7 +42,8 @@
 #include "typst/070-m2-results.typ"
 #pagebreak()
 #include "typst/080-conclusion.typ"
-
+#pagebreak()
+#include "typst/090-appendices.typ"
 
 #pagebreak()
 #outline(title: [List of Figures], target: figure.where(kind: image))
