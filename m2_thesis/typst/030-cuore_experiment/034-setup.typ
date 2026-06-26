@@ -54,7 +54,8 @@ Next, five Cryomech PT coolers drive the temperature down to 4 K. To prevent the
 // ==== Mechanical Vibrations
 // To further mitigate environmental noise, the detector array is suspended from the Tower Support Plate (TSP), which hangs from an external Y-beam [13]. This structure is mechanically decoupled from the primary cryostat support by a Minus-K negative-stiffness isolation system [3]. Acting as a tunable mechanical low-pass filter with a cutoff frequency of approximately 0.5 Hz, the Minus-K system provides approximately 30 dB of attenuation against seismic and structural vibrations specifically along the vertical axis [3]. A comprehensive detailing of the physical dampening structures and the mechanical isolation campaign is provided in Chapter 3.
 
-=== Calibration System<sec3.4-calib>
+=== Calibration System
+<sec3.4-calib>
 Accurate energy calibration is essential for converting measured thermal pulse amplitudes into physical deposited energies. This requires periodically illuminating the detectors with known radioactive sources to map the detector response and correct for thermal non-linearities.
 
 Initially, CUORE utilized the internal Detector Calibration System (DCS). This system mechanically lowered thoriated tungsten (#th232) strings directly into the 10 mK cryogenic volume, providing uniform illumination and high statistics without excessive pileup. The #th232 chain introduces a sharp #tl208 decay peak at 2615 keV, which serves as the primary calibration reference due to its proximity to the #te130 $Q_(beta beta)$ value.
